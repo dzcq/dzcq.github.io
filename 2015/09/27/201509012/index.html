@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>破解excel工作表密码 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="EXCEL工作表保护密码破解方法:1.打开文件2.工具—宏—-录制新宏—输入名字如:aa3.停止录制(这样得到一个空宏)">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="破解excel工作表密码"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 破解excel工作表密码</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>EXCEL工作表保护密码破解<br>方法:<br>1.打开文件<br>2.工具—宏—-录制新宏—输入名字如:aa<br>3.停止录制(这样得到一个空宏)<br><a id="more"></a><br>4.工具—宏—-宏,选aa,点编辑按钮<br>5.删除窗口中的所有字符(只有几个),替换为下面的内容:(复制吧)<br>6.关闭编辑窗口<br>7.工具—宏—–宏,选AllInternalPasswords,运行,确定两次,等2分钟,再确定.OK,没有密码了!!<br>内容如下：<br><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Public</span> <span class="keyword">Sub</span> AllInternalPasswords() </span><br><span class="line"><span class="comment">' Breaks worksheet and workbook structure passwords. Bob McCormick </span></span><br><span class="line"><span class="comment">' probably originator of base code algorithm modified for coverage </span></span><br><span class="line"><span class="comment">' of workbook structure / windows passwords and for multiple passwords </span></span><br><span class="line"><span class="comment">' </span></span><br><span class="line"><span class="comment">' Norman Harker and JE McGimpsey 27-Dec-2002 (Version 1.1) </span></span><br><span class="line"><span class="comment">' Modified 2003-Apr-04 by JEM: All msgs to constants, and </span></span><br><span class="line"><span class="comment">' eliminate one Exit Sub (Version 1.1.1) </span></span><br><span class="line"><span class="comment">' Reveals hashed passwords NOT original passwords </span></span><br><span class="line"><span class="keyword">Const</span> DBLSPACE <span class="keyword">As</span> <span class="built_in">String</span> = vbNewLine &amp; vbNewLine </span><br><span class="line"><span class="keyword">Const</span> AUTHORS <span class="keyword">As</span> <span class="built_in">String</span> = DBLSPACE &amp; vbNewLine &amp; _ </span><br><span class="line"><span class="string">"Adapted from Bob McCormick base code by"</span> &amp; _ </span><br><span class="line"><span class="string">"Norman Harker and JE McGimpsey"</span> </span><br><span class="line"><span class="keyword">Const</span> HEADER <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"AllInternalPasswords User Message"</span> </span><br><span class="line"><span class="keyword">Const</span> VERSION <span class="keyword">As</span> <span class="built_in">String</span> = DBLSPACE &amp; <span class="string">"Version 1.1.1 2003-Apr-04"</span> </span><br><span class="line"><span class="keyword">Const</span> REPBACK <span class="keyword">As</span> <span class="built_in">String</span> = DBLSPACE &amp; <span class="string">"Please report failure "</span> &amp; _ </span><br><span class="line"><span class="string">"to the microsoft.public.excel.programming newsgroup."</span> </span><br><span class="line"><span class="keyword">Const</span> ALLCLEAR <span class="keyword">As</span> <span class="built_in">String</span> = DBLSPACE &amp; <span class="string">"The workbook should "</span> &amp; _ </span><br><span class="line"><span class="string">"now be free of all password protection, so make sure you:"</span> &amp; _ </span><br><span class="line">DBLSPACE &amp; <span class="string">"SAVE IT NOW!"</span> &amp; DBLSPACE &amp; <span class="string">"and also"</span> &amp; _ </span><br><span class="line">DBLSPACE &amp; <span class="string">"BACKUP!, BACKUP!!, BACKUP!!!"</span> &amp; _ </span><br><span class="line">DBLSPACE &amp; <span class="string">"Also, remember that the password was "</span> &amp; _ </span><br><span class="line"><span class="string">"put there for a reason. Don't stuff up crucial formulas "</span> &amp; _ </span><br><span class="line"><span class="string">"or data."</span> &amp; DBLSPACE &amp; <span class="string">"Access and use of some data "</span> &amp; _ </span><br><span class="line"><span class="string">"may be an offense. If in doubt, don't."</span> </span><br><span class="line"><span class="keyword">Const</span> MSGNOPWORDS1 <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"There were no passwords on "</span> &amp; _ </span><br><span class="line"><span class="string">"sheets, or workbook structure or windows."</span> &amp; AUTHORS &amp; VERSION </span><br><span class="line"><span class="keyword">Const</span> MSGNOPWORDS2 <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"There was no protection to "</span> &amp; _ </span><br><span class="line"><span class="string">"workbook structure or windows."</span> &amp; DBLSPACE &amp; _ </span><br><span class="line"><span class="string">"Proceeding to unprotect sheets."</span> &amp; AUTHORS &amp; VERSION </span><br><span class="line"><span class="keyword">Const</span> MSGTAKETIME <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"After pressing OK button this "</span> &amp; _ </span><br><span class="line"><span class="string">"will take some time."</span> &amp; DBLSPACE &amp; <span class="string">"Amount of time "</span> &amp; _ </span><br><span class="line"><span class="string">"depends on how many different passwords, the "</span> &amp; _ </span><br><span class="line"><span class="string">"passwords, and your computer's specification."</span> &amp; DBLSPACE &amp; _ </span><br><span class="line"><span class="string">"Just be patient! Make me a coffee!"</span> &amp; AUTHORS &amp; VERSION </span><br><span class="line"><span class="keyword">Const</span> MSGPWORDFOUND1 <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"You had a Worksheet "</span> &amp; _ </span><br><span class="line"><span class="string">"Structure or Windows Password set."</span> &amp; DBLSPACE &amp; _ </span><br><span class="line"><span class="string">"The password found was: "</span> &amp; DBLSPACE &amp; <span class="string">"$$"</span> &amp; DBLSPACE &amp; _ </span><br><span class="line"><span class="string">"Note it down for potential future use in other workbooks by "</span> &amp; _ </span><br><span class="line"><span class="string">"the same person who set this password."</span> &amp; DBLSPACE &amp; _ </span><br><span class="line"><span class="string">"Now to check and clear other passwords."</span> &amp; AUTHORS &amp; VERSION </span><br><span class="line"><span class="keyword">Const</span> MSGPWORDFOUND2 <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"You had a Worksheet "</span> &amp; _ </span><br><span class="line"><span class="string">"password set."</span> &amp; DBLSPACE &amp; <span class="string">"The password found was: "</span> &amp; _ </span><br><span class="line">DBLSPACE &amp; <span class="string">"$$"</span> &amp; DBLSPACE &amp; <span class="string">"Note it down for potential "</span> &amp; _ </span><br><span class="line"><span class="string">"future use in other workbooks by same person who "</span> &amp; _ </span><br><span class="line"><span class="string">"set this password."</span> &amp; DBLSPACE &amp; <span class="string">"Now to check and clear "</span> &amp; _ </span><br><span class="line"><span class="string">"other passwords."</span> &amp; AUTHORS &amp; VERSION </span><br><span class="line"><span class="keyword">Const</span> MSGONLYONE <span class="keyword">As</span> <span class="built_in">String</span> = <span class="string">"Only structure / windows "</span> &amp; _ </span><br><span class="line"><span class="string">"protected with the password that was just found."</span> &amp; _ </span><br><span class="line">ALLCLEAR &amp; AUTHORS &amp; VERSION &amp; REPBACK </span><br><span class="line"><span class="keyword">Dim</span> w1 <span class="keyword">As</span> Worksheet, w2 <span class="keyword">As</span> Worksheet </span><br><span class="line"><span class="keyword">Dim</span> i <span class="keyword">As</span> <span class="built_in">Integer</span>, j <span class="keyword">As</span> <span class="built_in">Integer</span>, k <span class="keyword">As</span> <span class="built_in">Integer</span>, l <span class="keyword">As</span> <span class="built_in">Integer</span> </span><br><span class="line"><span class="keyword">Dim</span> m <span class="keyword">As</span> <span class="built_in">Integer</span>, n <span class="keyword">As</span> <span class="built_in">Integer</span>, i1 <span class="keyword">As</span> <span class="built_in">Integer</span>, i2 <span class="keyword">As</span> <span class="built_in">Integer</span> </span><br><span class="line"><span class="keyword">Dim</span> i3 <span class="keyword">As</span> <span class="built_in">Integer</span>, i4 <span class="keyword">As</span> <span class="built_in">Integer</span>, i5 <span class="keyword">As</span> <span class="built_in">Integer</span>, i6 <span class="keyword">As</span> <span class="built_in">Integer</span> </span><br><span class="line"><span class="keyword">Dim</span> PWord1 <span class="keyword">As</span> <span class="built_in">String</span> </span><br><span class="line"><span class="keyword">Dim</span> ShTag <span class="keyword">As</span> <span class="built_in">Boolean</span>, WinTag <span class="keyword">As</span> <span class="built_in">Boolean</span> </span><br><span class="line"></span><br><span class="line">Application.ScreenUpdating = <span class="literal">False</span> </span><br><span class="line"><span class="keyword">With</span> ActiveWorkbook </span><br><span class="line">WinTag = .ProtectStructure <span class="keyword">Or</span> .ProtectWindows </span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span> </span><br><span class="line">ShTag = <span class="literal">False</span> </span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> w1 <span class="keyword">In</span> Worksheets </span><br><span class="line">ShTag = ShTag <span class="keyword">Or</span> w1.ProtectContents </span><br><span class="line"><span class="keyword">Next</span> w1 </span><br><span class="line"><span class="keyword">If</span> <span class="keyword">Not</span> ShTag <span class="keyword">And</span> <span class="keyword">Not</span> WinTag <span class="keyword">Then</span> </span><br><span class="line">MsgBox MSGNOPWORDS1, vbInformation, HEADER </span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Sub</span> </span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span> </span><br><span class="line">MsgBox MSGTAKETIME, vbInformation, HEADER </span><br><span class="line"><span class="keyword">If</span> <span class="keyword">Not</span> WinTag <span class="keyword">Then</span> </span><br><span class="line">MsgBox MSGNOPWORDS2, vbInformation, HEADER </span><br><span class="line"><span class="keyword">Else</span> </span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">Resume</span> <span class="keyword">Next</span> </span><br><span class="line"><span class="keyword">Do</span> <span class="comment">'dummy do loop </span></span><br><span class="line"><span class="keyword">For</span> i = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> j = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> k = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> l = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> m = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i1 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> i2 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i3 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i4 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> i5 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i6 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> n = <span class="number">32</span> <span class="keyword">To</span> <span class="number">126</span> </span><br><span class="line"><span class="keyword">With</span> ActiveWorkbook </span><br><span class="line">.Unprotect Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; _ </span><br><span class="line">Chr(l) &amp; Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; _ </span><br><span class="line">Chr(i3) &amp; Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n) </span><br><span class="line"><span class="keyword">If</span> .ProtectStructure = <span class="literal">False</span> <span class="keyword">And</span> _ </span><br><span class="line">.ProtectWindows = <span class="literal">False</span> <span class="keyword">Then</span> </span><br><span class="line">PWord1 = Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; Chr(l) &amp; _ </span><br><span class="line">Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _ </span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n) </span><br><span class="line">MsgBox Application.Substitute(MSGPWORDFOUND1, _ </span><br><span class="line"><span class="string">"$$"</span>, PWord1), vbInformation, HEADER </span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span> <span class="comment">'Bypass all for...nexts </span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span> </span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span> </span><br><span class="line"><span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span> </span><br><span class="line"><span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span> </span><br><span class="line"><span class="keyword">Loop</span> <span class="keyword">Until</span> <span class="literal">True</span> </span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">GoTo</span> <span class="number">0</span> </span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span> </span><br><span class="line"><span class="keyword">If</span> WinTag <span class="keyword">And</span> <span class="keyword">Not</span> ShTag <span class="keyword">Then</span> </span><br><span class="line">MsgBox MSGONLYONE, vbInformation, HEADER </span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Sub</span> </span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span> </span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">Resume</span> <span class="keyword">Next</span> </span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> w1 <span class="keyword">In</span> Worksheets </span><br><span class="line"><span class="comment">'Attempt clearance with PWord1 </span></span><br><span class="line">w1.Unprotect PWord1 </span><br><span class="line"><span class="keyword">Next</span> w1 </span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">GoTo</span> <span class="number">0</span> </span><br><span class="line">ShTag = <span class="literal">False</span> </span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> w1 <span class="keyword">In</span> Worksheets </span><br><span class="line"><span class="comment">'Checks for all clear ShTag triggered to 1 if not. </span></span><br><span class="line">ShTag = ShTag <span class="keyword">Or</span> w1.ProtectContents </span><br><span class="line"><span class="keyword">Next</span> w1 </span><br><span class="line"><span class="keyword">If</span> ShTag <span class="keyword">Then</span> </span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> w1 <span class="keyword">In</span> Worksheets </span><br><span class="line"><span class="keyword">With</span> w1 </span><br><span class="line"><span class="keyword">If</span> .ProtectContents <span class="keyword">Then</span> </span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">Resume</span> <span class="keyword">Next</span> </span><br><span class="line"><span class="keyword">Do</span> <span class="comment">'Dummy do loop </span></span><br><span class="line"><span class="keyword">For</span> i = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> j = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> k = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> l = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> m = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i1 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> i2 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i3 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i4 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span> </span><br><span class="line"><span class="keyword">For</span> i5 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> i6 = <span class="number">65</span> <span class="keyword">To</span> <span class="number">66</span>: <span class="keyword">For</span> n = <span class="number">32</span> <span class="keyword">To</span> <span class="number">126</span> </span><br><span class="line">.Unprotect Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; _ </span><br><span class="line">Chr(l) &amp; Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _ </span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n) </span><br><span class="line"><span class="keyword">If</span> <span class="keyword">Not</span> .ProtectContents <span class="keyword">Then</span> </span><br><span class="line">PWord1 = Chr(i) &amp; Chr(j) &amp; Chr(k) &amp; Chr(l) &amp; _ </span><br><span class="line">Chr(m) &amp; Chr(i1) &amp; Chr(i2) &amp; Chr(i3) &amp; _ </span><br><span class="line">Chr(i4) &amp; Chr(i5) &amp; Chr(i6) &amp; Chr(n) </span><br><span class="line">MsgBox Application.Substitute(MSGPWORDFOUND2, _ </span><br><span class="line"><span class="string">"$$"</span>, PWord1), vbInformation, HEADER</span><br><span class="line"><span class="comment">'leverage finding Pword by trying on other sheets</span></span><br><span class="line"><span class="keyword">For</span> <span class="keyword">Each</span> w2 <span class="keyword">In</span> Worksheets</span><br><span class="line">w2.Unprotect PWord1</span><br><span class="line"><span class="keyword">Next</span> w2</span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span> <span class="comment">'Bypass all for...nexts</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span>: <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">Loop</span> <span class="keyword">Until</span> <span class="literal">True</span></span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">GoTo</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line"><span class="keyword">Next</span> w1</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">MsgBox ALLCLEAR &amp; AUTHORS &amp; VERSION &amp; REPBACK, vbInformation, HEADER</span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/28/201509013/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/27/201509011/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/27/201509012/" data-title="破解excel工作表密码" data-url="http://dzcq.gitcafe.io/2015/09/27/201509012/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

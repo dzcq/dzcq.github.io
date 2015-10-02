@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>excel条件查询 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="Excel中应用条件的时候比较多，方法也不只一种，下面记录两种最简单、最常用的方法：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="excel条件查询"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> excel条件查询</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>Excel中应用条件的时候比较多，方法也不只一种，下面记录两种最简单、最常用的方法：<br><a id="more"></a></p>
+<h2 id="方法一">方法一</h2><h3 id="用lookup函数">用lookup函数</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">2</span>,<span class="number">1</span>/(条件)</span></span>,查找数组或区域)</span><br><span class="line">或</span><br><span class="line"><span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">1</span>,<span class="number">0</span>/(条件)</span></span>,查找数组或区域)</span><br></pre></td></tr></table></figure>
+<p>返回最后一个满足条件的数据<br>多条件：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOKUP<span class="list">(<span class="number">1</span>,<span class="number">0</span>/<span class="list">(<span class="list">(条件<span class="number">1</span>)</span><span class="variable">*(条件2)*</span><span class="list">(条件N)</span>)</span>,查找数组或区域)</span></span><br></pre></td></tr></table></figure></p>
+<p>Lookup多区间判断<br>下图中，在C2单元格输入以下公式，向下复制即可。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=LOOKUP(B2,&#123;<span class="number">0</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">75</span>,<span class="number">85</span>,<span class="number">96</span>;<span class="string">"很差"</span>,<span class="string">"差"</span>,<span class="string">"一般"</span>,<span class="string">"较好"</span>,<span class="string">"优秀"</span>,<span class="string">"能手"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509008-1.PNG" alt="图1"></p>
+<h2 id="方法二">方法二</h2><h3 id="Index+Match">Index+Match</h3><p>返回第一个满足条件的数据<br>如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509008-2.png" alt="图２"><br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="ruby"><span class="constant">INDEX</span>(<span class="constant">C2</span><span class="symbol">:C13</span>,<span class="constant">MATCH</span>(<span class="number">1</span>,(<span class="constant">A2</span><span class="symbol">:A13=F3</span>)*(<span class="constant">B2</span><span class="symbol">:B13=G3</span>),<span class="number">0</span>))</span></span><br></pre></td></tr></table></figure></p>
+<p><code>INDEX(C2:C13．．．</code>　是指查询范围，<br>MATCH(1,(A2:A13=F3)<em>(B2:B13=G3),0)是指查询的条件。<br>MATCH(1,(A2:A13=F3)</em>(B2:B13=G3),0)：<br>1、第一参数1，就是数字1；<br>2、第二参数(A2:A13=F3)<em>(B2:B13=G3)——得到的是由1和0组成的常数数组（两个等式对应位置都是true，相乘得1，有一个是false便得0）<br>3、整个公式段`MATCH(1,(A2:A13=F3)</em>(B2:B13=G3),0)`——在这个数组中找到首次出现1的位置，由于数组是非严格升序的（比如可能是间隔着出现1和0），所以第三参数采用0，精确查找。</p>
+<h2 id="区别">区别</h2><p>两种方法的区别就是：<br>Lookup得到的结果是 返回最后一个满足条件的数据<br>Index+Match得到的结果是 返回第一个满足条件的数据</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/27/201509009/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/27/201509007/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/27/201509008/" data-title="excel条件查询" data-url="http://dzcq.gitcafe.io/2015/09/27/201509008/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li> <li><a href="/tags/lookup/">lookup<span>1</span></a></li> <li><a href="/tags/查询/">查询<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法一"><span class="toc-article-text">方法一</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#用lookup函数"><span class="toc-article-text">用lookup函数</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法二"><span class="toc-article-text">方法二</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Index+Match"><span class="toc-article-text">Index+Match</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#区别"><span class="toc-article-text">区别</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

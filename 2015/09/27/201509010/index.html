@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>EXCEL中提取身份证出生日期和性别,检验身份证号码的正确性 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="现在的身份证号码全部为18位：６位数字常住户口所在县市的行政区划代码，８位数字出生日期代码，３位数字顺序码和１位检验码。其中３位数字顺序码，是为同一地址码的同年同月同日出生人员编制的顺序号，偶数的为女性，奇数的为男性。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="EXCEL中提取身份证出生日期和性别,检验身份证号码的正确性"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> EXCEL中提取身份证出生日期和性别,检验身份证号码的正确性</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>现在的身份证号码全部为18位：６位数字常住户口所在县市的行政区划代码，８位数字出生日期代码，３位数字顺序码和１位检验码。<br>其中３位数字顺序码，是为同一地址码的同年同月同日出生人员编制的顺序号，偶数的为女性，奇数的为男性。<br><a id="more"></a></p>
+<h2 id="提取出生日期信息">提取出生日期信息</h2><p>15位:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=--TEXT<span class="list">(<span class="number">19</span><span class="keyword">&amp;MID</span><span class="list">(<span class="keyword">A2</span>,<span class="number">7</span>,<span class="number">6</span>)</span>,<span class="string">"#-00-00"</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>18位:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=--TEXT<span class="list">(<span class="keyword">MID</span><span class="list">(<span class="keyword">A2</span>,<span class="number">7</span>,<span class="number">8</span>)</span>,<span class="string">"#-00-00"</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>(请将输入公式的单元格格式设置为日期格式）</p>
+<h2 id="提取性别信息">提取性别信息</h2><p>15位:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=IF<span class="list">(<span class="keyword">MOD</span><span class="list">(<span class="keyword">RIGHT</span><span class="list">(<span class="keyword">A2</span>)</span>,<span class="number">2</span>)</span>=1,<span class="string">"男"</span>,<span class="string">"女"</span>)</span></span><br></pre></td></tr></table></figure></p>
+<p>18位:<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=IF<span class="list">(<span class="keyword">MOD</span><span class="list">(<span class="keyword">MID</span><span class="list">(<span class="keyword">A2</span>)</span>,<span class="number">17</span>,<span class="number">1</span>)</span>=1,<span class="string">"男"</span>,<span class="string">"女"</span>)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="检验身份证号码的正确性">检验身份证号码的正确性</h2><p>18位身份证号码的最后一位是检验码，它是根据身份证前17位数字依照规则计算出来的，其值０～９或X。一般情况只要有一位数字输入错误，依照规则计算后就会与第18位数不符。当然不排除按错误号码计算后恰好与检验码相符的情况，但这种情况出现的可能性较低。因此，对18位号码的验证采用如下公式A2为身份证号码所在单元格：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">MID</span><span class="params">(<span class="string">"10X98765432"</span>,MOD(SUMPRODUCT(MID(A2,ROW(INDIRECT(<span class="string">"1:17"</span>)</span></span>),<span class="number">1</span>)*<span class="number">2</span>^(<span class="number">18</span>-<span class="function"><span class="title">ROW</span><span class="params">(INDIRECT(<span class="string">"1:17"</span>)</span></span>))),<span class="number">11</span>)+<span class="number">1</span>,<span class="number">1</span>)=<span class="function"><span class="title">RIGHT</span><span class="params">(A2,<span class="number">1</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/27/201509011/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/27/201509009/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/27/201509010/" data-title="EXCEL中提取身份证出生日期和性别,检验身份证号码的正确性" data-url="http://dzcq.gitcafe.io/2015/09/27/201509010/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

@@ -1,0 +1,282 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>将hexo博客同时托管到github和gitcafe | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="很多人都把hexo托管到github上，因为github大家都用的比较久了。但是，如果你的博客主要访问者肯定还是国内的用户，国内的用户访问gitcafe比github是要快不少的。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="将hexo博客同时托管到github和gitcafe"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 将hexo博客同时托管到github和gitcafe</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>很多人都把hexo托管到github上，因为github大家都用的比较久了。但是，如果你的博客主要访问者肯定还是国内的用户，国内的用户访问gitcafe比github是要快不少的。<br><a id="more"></a><br>因此，我便萌生了将博客托管到gitcafe上的想法，但同时我又不想放弃在github上的更新。因此，便想到了，能不能同时更新到两个网站上，找了许多资料最终是找到了办法。</p>
+<hr>
+<h1 id="Hexo本地设置"><font size="5">Hexo本地设置</font></h1><p>只要将博客根目录下的<code>_config.yml</code>的deploy修改成类似以下代码即可。我这边提交采用的SSH密钥，这个方法有个好处，提交的时候不用输入用户名和密码。如果你习惯用http的方式，只要将地址改成相应的http地址即可。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"> <span class="attribute">type</span>: git</span><br><span class="line"><span class="attribute">repo</span>:</span><br><span class="line">  <span class="attribute">gitcafe</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:dzcq/dzcq.git,gitcafe-pages</span><br><span class="line">  <span class="attribute">github</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:dzcq/dzcq.github.io.git,master</span><br></pre></td></tr></table></figure></p>
+<p>此外，在填写上面这段代码的时候请注意，上面这段代码左边的-号只能有2个(如下图红圈)，如果超过2个一般就是会被认定为填写格式有问题。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509003.png" alt="repo"></p>
+<p>如果上面的方法不行，就试着把<code>_config.yml</code>的deploy改成下面的配置：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">- <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>: git<span class="variable">@gitcafe</span>.<span class="attribute">com</span>:dzcq/dzcq.git,gitcafe-pages</span><br><span class="line">- <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:dzcq/dzcq.github.io.git,master</span><br></pre></td></tr></table></figure></p>
+<h1 id="域名解析"><font size="5">域名解析</font></h1><p>当你像我一样，把博客同时托管在gitcafe和github时。如果你有自己的域名，你在解析的时候就可以将国内访问解析到gitcafe上，国外访问解析到github上.</p>
+<h2 id="gitcafe:">gitcafe:</h2><p>在<code>项目=&gt;项目设置=&gt;Pages服务</code>中添加自己的域名。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509003-3.PNG" alt=""></p>
+<h2 id="github">github</h2><p>在Hexo目录的source下建立CNAME文件(无后缀名)，内容为域名地址。<br>然后运行<code>hexo g</code>生成网页文件，并<code>hexo d</code>上传代码。</p>
+<h2 id="域名设置">域名设置</h2><p>来到自己的域名管理按如下方法设置即可：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509003-1.PNG" alt=""></p>
+<p><font size="5"><strong>参考</strong></font><br><a href="http://ppting.me/2015/02/08/gitcafe/" target="_blank" rel="external">同时将博客部署在Github和Gitcafe上，并通过DNSPOD分流</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/24/201509004/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/21/201509002/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/24/201509003/" data-title="将hexo博客同时托管到github和gitcafe" data-url="http://dzcq.gitcafe.io/2015/09/24/201509003/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/hexo/">hexo<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/gitcafe/">gitcafe<span>3</span></a></li> <li><a href="/tags/github/">github<span>2</span></a></li> <li><a href="/tags/hexo/">hexo<span>5</span></a></li> <li><a href="/tags/托管/">托管<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Hexo本地设置"><span class="toc-article-text">Hexo本地设置</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#域名解析"><span class="toc-article-text">域名解析</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#gitcafe:"><span class="toc-article-text">gitcafe:</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#github"><span class="toc-article-text">github</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#域名设置"><span class="toc-article-text">域名设置</span></a></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

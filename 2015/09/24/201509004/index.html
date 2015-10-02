@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>安装Hexo并部署到GitCafe | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="GitCafe, 感觉就是GitHub的国内版，访问速度比GitHub快，所以选择了它。注册之类的东西就不说啦，操作如下：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="安装Hexo并部署到GitCafe"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 安装Hexo并部署到GitCafe</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>GitCafe, 感觉就是GitHub的国内版，访问速度比GitHub快，所以选择了它。<br>注册之类的东西就不说啦，操作如下：<br><a id="more"></a></p>
+<h2 id="安装Hexo">安装Hexo</h2><p>•Windows：下载并安装 <a class="btn btn-info" href="http://git-scm.com/download/" target="_blank" rel="external">Git</a>。<br>•安装 <a class="btn btn-info" href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>。<br>•打开Git Bash输入<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">node</span> -v</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> -v</span><br></pre></td></tr></table></figure>
+<p>如能返回版本值，则安装成功，否则请检查环境变量，看<code>node.js</code>与<code>npm</code>路径是否添加成功。<br>•使用 npm 安装 Hexo<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> -<span class="keyword">g</span> hexo-cli</span></span><br></pre></td></tr></table></figure></p>
+<p>•hexo安装完成后,创建一个存放Hexo的文件夹，打开git命令行,cd到该目录下<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> init</span><br></pre></td></tr></table></figure></p>
+<p>•安装依赖模块<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure></p>
+<p>•查看是否安装成功,输入：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> g</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> s</span><br></pre></td></tr></table></figure>
+<p>然后本机打开网址：<code>http://127.0.0.1:4000</code> 查看。</p>
+<h2 id="部署到Gitcafe">部署到Gitcafe</h2><h3 id="创建项目名称">创建项目名称</h3><p>如下图，红框处拥有者和项目名称要一致。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509004-1.PNG" alt=""></p>
+<h3 id="在本机创建分支">在本机创建分支</h3><p>先安装hexo-deployer-git<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="operator"><span class="keyword">install</span> hexo-deployer-git <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure></p>
+<p>运行deploy命令，生成目录<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> d</span><br></pre></td></tr></table></figure></p>
+<p>进入hexo目录下的<code>.deploy_git</code>目录，运行命令<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>gitcafe-pages</span><br></pre></td></tr></table></figure></p>
+<p>查看是否创建成功<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch</span><br></pre></td></tr></table></figure></p>
+<p>如图所示，创建成功<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo201509004-2.PNG" alt=""></p>
+<h3 id="修改_config-yml配置文件">修改<code>_config.yml</code>配置文件</h3><p><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo201509004-3.PNG" alt=""><br>把其中的地址换成自己的地址</p>
+<h2 id="上传网页至gitcafe">上传网页至<code>gitcafe</code></h2><p>运行代码<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">hexo</span> d</span><br></pre></td></tr></table></figure></p>
+<p><font size="5" color="red">大功告成!</font></p>
+<h2 id="附1：git分支操作方法：">附1：git分支操作方法：</h2><h3 id="1-查看本地分支">1.查看本地分支</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">git</span> branch</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建分支">2.创建分支</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>test</span><br></pre></td></tr></table></figure>
+<p>test为分支名称</p>
+<h3 id="3-切换分支到test">3.切换分支到test</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-删除本地分支">4.删除本地分支</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">git</span> <span class="keyword">branch </span>-d xxxxx</span><br></pre></td></tr></table></figure>
+<p>xxxxx为分支名称。</p>
+<h2 id="附2：Hexo常用指令">附2：Hexo常用指令</h2><h3 id="init">init</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init <span class="string">[folder]</span></span><br></pre></td></tr></table></figure>
+<p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p>
+<h3 id="new">new</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">[layout]</span> &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+<h3 id="generate">generate</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo generate</span><br></pre></td></tr></table></figure>
+<p>生成静态文件。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d,–deploy</td>
+<td>文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td>-w,–watch</td>
+<td>监视文件变动</td>
+</tr>
+</tbody>
+</table>
+<h3 id="publish">publish</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo publish <span class="string">[layout]</span> &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<p>发表草稿。</p>
+<h3 id="server">server</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<p>启动服务器。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p, –port</td>
+<td>重设端口</td>
+</tr>
+<tr>
+<td>-s, –static</td>
+<td>只使用静态文件</td>
+</tr>
+<tr>
+<td>-l, –log</td>
+<td>启动日记记录，或覆盖记录格式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deploy">deploy</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo deploy</span><br></pre></td></tr></table></figure>
+<p>部署网站。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-g, –generate</td>
+<td>部署网站前，需要预先生成静态文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="migrate">migrate</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo migrate &lt;<span class="keyword">type</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>从其他系统 <a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">迁移内容</a>。</p>
+<h3 id="clean">clean</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>hexo clean</span><br></pre></td></tr></table></figure>
+<p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。</p>
+<h3 id="list">list</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="built_in">list</span> &lt;type&gt;</span><br></pre></td></tr></table></figure>
+<p>列出网站资料。</p>
+<h3 id="version">version</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="property">version</span></span><br></pre></td></tr></table></figure>
+<p>显示 Hexo 版本。</p>
+<h2 id="附3：Hexo主题推荐">附3：Hexo主题推荐</h2><h3 id="Freemind">Freemind</h3><p>1.安装主题,在博客根目录下执行如下命令。<br> <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wzpan</span><span class="regexp">/hexo-theme-freemind.git themes/freemind</span></span><br></pre></td></tr></table></figure></p>
+<p>2.安装 hexo-tag-bootstrap:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="operator"><span class="keyword">install</span> hexo-tag-bootstrap <span class="comment">--save</span></span></span><br></pre></td></tr></table></figure></p>
+<p>github 项目地址：<a href="https://github.com/wzpan/hexo-theme-freemind" target="_blank" rel="external">https://github.com/wzpan/hexo-theme-freemind</a><br>tag-bootstrap使用说明：<a href="http://wzpan.github.io/hexo-theme-freemind/2014/03/16/tag-plugins-cn/" target="_blank" rel="external">tag-bootstrap</a></p>
+<h3 id="jacman">jacman</h3><p>安装<br>在博客根目录下执行如下命令。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/wuchong</span><span class="regexp">/jacman.git themes/jacman</span></span><br></pre></td></tr></table></figure></p>
+<p>Jacman 需要安装 Hexo 2.7 及以上版本，请先升级您的 Hexo 程序，再启用此主题。<br>使用说明：<a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">http://wuchong.me/blog/2014/11/20/how-to-use-jacman/</a><br>github 项目地址：<a href="https://github.com/wuchong/jacman" target="_blank" rel="external">https://github.com/wuchong/jacman</a></p>
+<h3 id="light-ch">light-ch</h3><p>安装<br>在博客根目录下执行如下命令。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/pengloo</span>53/light-ch themes/light-ch</span><br></pre></td></tr></table></figure></p>
+<p>github 项目地址：<a href="https://github.com/pengloo53/Hexo-theme-light_cn" target="_blank" rel="external">https://github.com/pengloo53/Hexo-theme-light_cn</a></p>
+<h3 id="Concise">Concise</h3><p>安装<br>在博客根目录下执行如下命令。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/huangjunhui</span><span class="regexp">/concise.git themes/concise</span></span><br></pre></td></tr></table></figure></p>
+<p>github 项目地址：<a href="https://github.com/huangjunhui/concise" target="_blank" rel="external">https://github.com/huangjunhui/concise</a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/26/201509005/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/24/201509003/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/24/201509004/" data-title="安装Hexo并部署到GitCafe" data-url="http://dzcq.gitcafe.io/2015/09/24/201509004/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/hexo/">hexo<span>5</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/gitcafe/">gitcafe<span>3</span></a></li> <li><a href="/tags/hexo/">hexo<span>5</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安装Hexo"><span class="toc-article-text">安装Hexo</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#部署到Gitcafe"><span class="toc-article-text">部署到Gitcafe</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#创建项目名称"><span class="toc-article-text">创建项目名称</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#在本机创建分支"><span class="toc-article-text">在本机创建分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#修改_config-yml配置文件"><span class="toc-article-text">修改_config.yml配置文件</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#上传网页至gitcafe"><span class="toc-article-text">上传网页至gitcafe</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#附1：git分支操作方法："><span class="toc-article-text">附1：git分支操作方法：</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#1-查看本地分支"><span class="toc-article-text">1.查看本地分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#2-创建分支"><span class="toc-article-text">2.创建分支</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#3-切换分支到test"><span class="toc-article-text">3.切换分支到test</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#4-删除本地分支"><span class="toc-article-text">4.删除本地分支</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#附2：Hexo常用指令"><span class="toc-article-text">附2：Hexo常用指令</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#init"><span class="toc-article-text">init</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#new"><span class="toc-article-text">new</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#generate"><span class="toc-article-text">generate</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#publish"><span class="toc-article-text">publish</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#server"><span class="toc-article-text">server</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#deploy"><span class="toc-article-text">deploy</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#migrate"><span class="toc-article-text">migrate</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#clean"><span class="toc-article-text">clean</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#list"><span class="toc-article-text">list</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#version"><span class="toc-article-text">version</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#附3：Hexo主题推荐"><span class="toc-article-text">附3：Hexo主题推荐</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Freemind"><span class="toc-article-text">Freemind</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#jacman"><span class="toc-article-text">jacman</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#light-ch"><span class="toc-article-text">light-ch</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Concise"><span class="toc-article-text">Concise</span></a></li></ol></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

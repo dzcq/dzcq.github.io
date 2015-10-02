@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>转载:EXCEL技巧─利用函数获取工作表名 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="方法一　　常规方法 cell函数　　也可以这样取得工作表名，在任一单元格输入：1=RIGHT(CELL(&quot;filename&quot;),LEN(CELL(&quot;filename&quot;))-FIND(&quot;]&quot;,CELL(&quot;filename&quot;)))">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="转载:EXCEL技巧─利用函数获取工作表名"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 转载:EXCEL技巧─利用函数获取工作表名</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <h2 id="方法一">方法一</h2><p>　　常规方法 cell函数<br>　　也可以这样取得工作表名，在任一单元格输入：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">RIGHT</span><span class="params">(CELL(<span class="string">"filename"</span>)</span></span>,<span class="function"><span class="title">LEN</span><span class="params">(CELL(<span class="string">"filename"</span>)</span></span>)-<span class="function"><span class="title">FIND</span><span class="params">(<span class="string">"]"</span>,CELL(<span class="string">"filename"</span>)</span></span>))</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h2 id="方法二">方法二</h2><p>取工作表名及路径=CELL(“filename”,$A$1)</p>
+<p>取工作簿及表名<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=MID(CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>),FIND(<span class="string">"["</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>)),LEN(CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>))+<span class="number">1</span>-FIND(<span class="string">"["</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>取工作簿名<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=MID(CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>),FIND(<span class="string">"["</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>)),FIND(<span class="string">"]"</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>))-FIND(<span class="string">"["</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>))+<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+<p>取工作表名<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=MID(CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>),FIND(<span class="string">"]"</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>))+<span class="number">1</span>,LEN(CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>))-FIND(<span class="string">"]"</span>,CELL(<span class="string">"filename"</span>,<span class="variable">$A</span><span class="variable">$1</span>)))</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法三">方法三</h2><p>定义一个名称，简写为：mc,引用位置写入”=get.cell(66)”然后在任意单元格输入=mc,即可得到当前工作簿名称。<br>定义一个名称，简写为：mcb,引用位置写入”=get.cell(62)或=get.cell(32),然后在任意单元格输入=mcb,即可得到当前工作簿及工作表名称。</p>
+<p>补充A<br>取本表表名:<br>定义X=MID(GET.DOCUMENT(1),FIND(“]”,GET.DOCUMENT(1))+1,100)<br>在各表输入=X<br>　　补充B<br>定义一个名称，简写为：mcb,引用位置写入”=get.cell(62)或=get.cell(32),然后在任意单元格输入<br>=RIGHT(mcb2,LEN(mcb2)-SEARCH(“]”,mcb2,1)) 可以得到工作表名称<br>　　补充C<br>定义一个名称，简写为：mcb,引用位置写入”=get.cell(62)或=get.cell(32),然后在任意单元格输入<br>=MID(mcb,SEARCH(“]”,mcb2,1)+1,100) 可以得到工作表名称</p>
+<p>补充Ｄ知识点1<br>GET.DOCUMENT宏表函数说明<br>语法GET.DOCUMENT(type_num, name_text)<br>Type_num     指明信息类型的数。下表列出 type_num 的可能值与对应结果。<br>Type_num         返回<br>1         如果工作簿中不只一张表，用文字形式以”［book1］sheet1”的格式返回工作表的文件名。否则，只返回工作簿的文件名。工作簿文件名不包括驱动器，目录或窗口编号。通常最好使用 GET. DOCUMENT(76)<br>和 GET. DOCUMENT(88) 来返回活动工作表和活动工作簿的文件名。<br>2         作为文字，包括 name_text 的目录的路经。如果工作簿name_text 未被保存，返回错误值 #N/A<br>3         指明文件类型的数<br>　　　1 = 工作表<br>　　　2 = 图表<br>　　　3 = 宏表<br>　　　4 = 活动的信息窗口<br>　　　5 = 保留文件<br>　　　6 = 模块表<br>　　　7 = 对话框编辑表<br>4         如果最后一次存储文件后表发生了变化，返回TRUE；否则，返回FALSE。<br>5         如果表为只读，返回TRUE；否则，返回FALSE。<br>6         如果表设置了口令加以保护，返回TRUE；否则， 返回FALSE。<br>7         如果表中的单元格，表中的内容或图表中的系列被保护，返回TRUE；否则，返回FALSE。<br>8         如果工作簿窗口被保护，返回TRUE；否则，返回FALSE。<br>　　　下面四个 type_num 的数值只用于图表。<br>　　　Type_num         返回<br>9         指示主图表的类型的数。<br>　　　1 = 面积图<br>　　　2 = 条形图<br>　　　3 = 柱形图<br>　　　4 = 折线形<br>　　　5 = 饼形<br>　　　6 = XY (散点图)<br>　　　7 = 三维面积图<br>　　　8 =三维柱形图<br>　　　9 = 三维折线图<br>　　　10 = 三维饼图<br>　　　11 = 雷达图<br>　　　12 = 三维等形图<br>　　　13 = 三维曲面图<br>　　　14 = 圆环图<br>10         指示覆盖图表类型的数，同以上主图表的 1，2，3，4，5，6,11 和 14。没有覆盖图表的情况下返回错误值 #N/A<br>11         主图表系列的数<br>12         覆盖图表系列的数</p>
+<p>　　　下列 Type_num 的值用于工作表，宏表，在适当的时候用于图表。<br>　　　Type_num         返回<br>9         第一个使用行的编号。如文件是空的，返回零。<br>10         最后一个使用行的偏号。如文件是空的，返回零。<br>11         第一个使用列的编号。如文件是空的，返回零。<br>12         最后一个使用列的编号。如文件是空的 ，返回零。<br>13         窗口的编号。<br>14         指明计算方式的数。<br>　　　1 = 自动生成 有<br>　　　2 = 除表格外自动生成<br>　　　3 = 手动<br>15         如果在［选项］对话框的［重新计算设置］标签下选择［迭代］选择框，返回TRUE；否则，返回FALSE。<br>16         迭代间的最大数值。<br>17         迭代间的最大改变<br>18         如果在［选项］对话框的［重新计算设置］标签下选择［更新过程引用］选择框，返回TRUE；否则，返回<br>FALSE。<br>19         如果在［选项］对话框的［重新计算设置］标签下选［以显示值为准］选择框，返回TRUE；否则，返回<br>FALSE。<br>20         如果在 Options 对话框的［重新计算设置］标签下选择［1904 日期系统选择框，返回TRUE；否则，返回<br>FALSE。<br>　　　Type_num 是21-29之间的数， 对应于 Microsoft Excel 先前版本的四种默认字体。提供这些值是为了宏的兼容性。<br>　　　下列 Type_num 数值应用于工作表，宏表和指定的图表。<br>　　　Type_num         返回<br>30         以文字形式返回当前表合并引用的水平数组. 如果列表是空的，返回错误值 #N/A<br>31         1至11 之间的一个数，指明用于当前合并的函数。对应于每个数的函数列于下面 CONSOLIDATE 函数中，默认函数为SUM<br>32         三项水平数组，用于指明 Data Consolidate 对话框中选择框的状态。如果此项为TRUE，选择选择框.<br>如果此项为FALSE，清除选择框. 第一项指明［顶端行］选择框，第二项指［最左列］选择框,第三项指［与源数据链接］选择框。</p>
+<p>33         如果选择了［选项］对话框的［重新计算设置］标签下的［保存前重新计算］选择框，返回TRUE；否则，返回FALSE。<br>34         如工作簿定义为只读，返回TRUE；否则，返回FALSE。<br>35         工作簿为写保护，返回TRUE；否则，返回FALSE。<br>36         如文件设置了写保护口令，并以可读/可写方式打开，返回最初使用写保护口令存文件的用户的名字。如文件以只读形式打开，或文件未设置口令，返回当前用户的名字。<br>37          对应于显示在［另存为］对话框中的文档的文件类型。所有   Microsoft Excel 可识别的文件类型列于<br>SAVE.AS函数中。<br>38          如选择了［分级显示］对话框中的［明细数据的下方选择框，返回TRUE；否则，返回FALSE。<br>39         如果选择了［分级显示］对话框中的［明细数据的右侧］选择框，返回TRUE；否则，返回FALSE。<br>40         如果选择了［另存为］对话框中的［建立备份文件］选择框，返回TRUE；否则，返回FALSE。<br>41         1至3中的一个数字，指明是否显示对象：<br>　　　　1 = 显示所有对象<br>　　　　2 = 图和表的位置标志符<br>　　　　3 = 所有对象被隐藏<br>42         包括表中所有对象的水平数组，如无对象，返回错误值 #N/A<br>43         如果在［选项］对话框的［重新计算设置］标签下选择了［保存外部链接值］选择框，返回TRUE；否则，返回FALSE。<br>44         如文件中的对象被保护，返回TRUE；否则，返回FALSE。<br>45         0至3中的一个数，指明窗口同步化方式。<br>0 = 不同步<br>1 = 水平方向上同步<br>2 = 垂直方向上同步<br>3 = 水平方向，垂直方向上均同步<br>46         七项水平数组，用于打印设置，可由 LINE. PRINT 宏函数完成。</p>
+<ul>
+<li>建立文字</li>
+<li>左边距</li>
+<li>右边距</li>
+<li>顶边距</li>
+<li>底边距</li>
+<li>页长</li>
+<li>用于指明打印时输出是否格式化的逻辑值，格式化为TRUE,                         非格式化为FALSE。<br>47         如果在［选项］对话框的［转换］标签中选择了［转换表达式求值］选择框，返回TRUE；否则，返回FALSE<br>。<br>48         标准栏宽度设置</li>
+</ul>
+<p>下列 type_num 值对应于打印与页的设置。</p>
+<p>Type_num         返回</p>
+<p>49         开始页的页码，如未指明或在［页面设置］对话框的［页］标签下的［起始页号］文字框输入了”自动”，返回错误值#N/A<br>50         当前设置下欲打印的总页数，其中包括注释，如果文件为图表，值为1<br>51         如只打印注释时的总页数。如文件为图表类型，返回错误值 #N/A<br>52         在当前指定的单位中，指明边距设置(左，右，顶，底)的四项水平数组。<br>53         指明方向的数字:<br>1 = 纵向<br>2 = 横向<br>54         文本串的页眉，包括格式化代码。</p>
+<p>55         文本串的脚注，包括格式化代码。<br>56         包括两个逻辑值的水平数组，对应于水平垂直方向置中。<br>57         如打印行或列的上标题，返回TRUE；否则，返回FALSE。<br>58         如打印网格线，返回TRUE；否则，返回FALSE。<br>59         如表以黑白方式打印，返回TRUE；否则，返回FALSE。<br>60         1至3中的一个数,指明打印时定义图表大小的方式。<br>1 = 屏幕大小<br>2 = 调整到<br>3 = 使用整页<br>61         指明重排页命令的数:<br>1 = 先列后行<br>2 = 先行后列<br>如文件为图表类型,返回错误值#N/A</p>
+<p>62         扩缩比,未指定时为100%。如当前打印机不支持此项操作或文件为图表类型时，返回错误值#N/A。<br>63         一个两项水平数组,指明其报表需按比例换算，以适合的页数印出 ,第一项等于宽度(如未指明宽度按比例缩放,返回#N/A)第二项等于高度(如未指明高度按比例缩放,返回#N/A)。如文件为图表类型,返回#N/A<br>64         行数的数组,相应于手动或自动生成页中断下面的行。<br>65          列数的数组。相应于手动或自动生成的页中断右边的列。</p>
+<p>附注         GET.DOCUMENT(62)和GET.DOCUMENT(63)互相排斥,如果其中一个返回一个数值,另外一个返回错误值#N/A。</p>
+<p>下列type_num数值对应不同文件设置。</p>
+<p>Type_num         返回</p>
+<p>66         Microsoft Excel for   Windows 中，如果在［选项］对话框的［转换］标签中选择了［转换公式项］选择框,返回TRUE;否则,返回FALSE。<br>67         Microsoft Excel 5.0版本下,通常返回TRUE。<br>68         Microsoft Excel 5.0版本下,通常返回簿的文件名。<br>69         如果在［选项］对话框的［查看］标志中选择了［自动分页线］，返回TRUE;否则,返回FALSE。<br>70         返回文件中所有数据透视表的文件名<br>71          返回表示文件中所有类型的水平数组。</p>
+<p>72         返回表示当前表显示的所有图表类型的水平数组。<br>73         返回表示当前工作表每一个图表中系列数的水平数组。<br>74         返回控制的对象标识符，控制当前执行中的由用户定义的对话框编辑表中获得焦点的控制(以对话框编辑表为基础)。<br>75          返回对象的对象标识符,对象正在执行中的由用户定义的对话框编辑表中的默认按枢(以对话框编辑表为基础)。<br>76         以［Book1］sheel的形式返回活动表或宏表的文件名。<br>77          以整数的形式返回页的大小: </p>
+<p>1=Letter 8.5x11 in<br>2 = Letter Small 8.5 x 11 in<br>5 = Legal 8.5 x 14 in<br>9 = A4 210 x 297 mm<br>10 = A4 Small 210 x 297 mm<br>13 = B5 182 x 257 mm<br>18 = Note 8.5 x 11 in<br>78          返回打印分辨率,为一个二项水平数组。<br>79         如在［页面设置］对话框的［工作表］标签中选择［草稿质量］选择框返回TRUE;否则,返回FALSE。<br>80         如在［页面设置］对话框的［工作表］标签下选择了［附注］选择框，返回TRUE;否则,返回FALSE。</p>
+<p>81         做为一个单元格的引用,从［页面设置］对话框的［工作表］标签返回打印区域。<br>82         做为一个单元格引用从［页面设置］对话框的［工作表］标签回打印标题。<br>83         如果工作表为方案而被保护起来,返回TRUE;否则,返回FALSE。<br>84         返回表中第一个循环引用的值,如无循环引用,返回错误值#N/A。<br>85         返回表的高级筛选方式状态。这种方式顶部设有向下的箭头,如数据精单通过选择［筛选］,再从［数据］菜单选择［高级筛选］被筛选,返回TRUE;否则,返回FALSE。</p>
+<p>86         返回表的自动筛选方式状态。这种方式顶部有向下的箭头,如选择了［筛选］,再从［数据］菜单选择［自动筛选］,筛选向下的箭头被显示出来,返回TRUE;否则,返回FALSE。<br>87         返回指示表的位置的数字,第一张表位置为1。计算中包含隐藏起来的表。<br>88         以”book1”的形式返回活动工作簿的文件名。</p>
+<p>　　补充E知识点2<br>函数定义：<br>GET.CELL(类型号,[单元格(或范围)])   ‘[内容为可选]<br>类型号说明：<br>1 参照储存格的绝对地址<br>2 参照储存格的列号<br>3 参照储存格的栏号<br>4 类似 TYPE 函数<br>5 参照地址的内容<br>6 文字显示参照位址的公式<br>7 参照位址的格式，文字显示<br>8 文字显示参照位址的格式<br>9 传回储存格外框左方样式，数字显示<br>10 传回储存格外框右方样式，数字显示<br>11 传回储存格外框方上样式，数字显示<br>12 传回储存格外框方下样式，数字显示<br>13 传回内部图样，数字显示<br>14 如果储存格被设定 locked传回 True<br>15 如果公式处于隐藏状态传回 True<br>16 传回储存格宽度<br>17 以点为单位传回储存格高度<br>18 字型名称<br>19 以点为单位元传回字号<br>20 如果储存格所有或第一个字符为加粗传回 True<br>21 如果储存格所有或第一个字符为斜体传回 True<br>22 如果储存格所有或第一个字符为单底线传回True<br>23 如果储存格所有或第一个字符字型中间加了一条水平线传回 True<br>24 传回储存格第一个字符色彩数字， 1 至 56。如果设定为自动，传回 0<br>25 MS Excel不支持大纲格式<br>26 MS Excel不支持阴影格式<br>27 数字显示手动插入的分页线设定<br>28 大纲的列层次<br>29 大纲的栏层次<br>30 如果范围为大纲的摘要列则为 True<br>31 如果范围为大纲的摘要栏则为 True<br>32 显示活页簿和工作表名称<br>33 如果储存格格式为多行文字则为 True<br>34 传回储存格外框左方色彩，数字显示。如果设定为自动，传回 0<br>35 传回储存格外框右方色彩，数字显示。如果设定为自动，传回 0<br>36 传回储存格外框上方色彩，数字显示。如果设定为自动，传回 0<br>37 传回储存格外框下方色彩，数字显示。如果设定为自动，传回 0<br>38 传回储存格前景阴影色彩，数字显示。如果设定为自动，传回 0<br>39 传回储存格背影阴影色彩，数字显示。如果设定为自动，传回 0<br>40 文字显示储存格样式<br>41 传回参照地址的原始公式<br>42 以点为单位传回使用中窗口左方至储存格左方水平距离<br>43 以点为单位传回使用中窗口上方至储存格上方垂直距离<br>44 以点为单位传回使用中窗口左方至储存格右方水平距离<br>45 以点为单位传回使用中窗口上方至储存格下方垂直距离<br>46 如果储存格有插入批注传回 True<br>47 如果储存格有插入声音提示传回 True<br>48 如果储存格有插入公式传回 True<br>49 如果储存格是数组公式的范围传回 True<br>50 传回储存格垂直对齐，数字显示<br>51 传回储存格垂直方向，数字显示<br>52 传回储存格前缀字符<br>53 文字显示传回储存格显示内容<br>54 传回储存格数据透视表名称<br>55 传回储存格在数据透视表的位置<br>56 枢纽分析<br>57 如果储存格所有或第一个字符为上标传回True<br>58 文字显示传回储存格所有或第一个字符字型样式<br>59 传回储存格底线样式，数字显示<br>60 如果储存格所有或第一个字符为下标传回True<br>61 枢纽分析<br>62 显示活页簿和工作表名称<br>63 传回储存格的填满色彩<br>64 传回图样前景色彩<br>65 枢纽分析<br>66 显示活页簿名称</p>
+<h2 id="方法四">方法四</h2><p>使用自定义函数<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">Function</span></span> Intsheet(x As <span class="type">Integer</span>)</span><br><span class="line"><span class="keyword">If</span> x = <span class="number">0</span> <span class="keyword">Then</span></span><br><span class="line">Intsheet = ActiveCell.Parent.<span class="keyword">Name</span></span><br><span class="line"></span><br><span class="line">ElseIf x &gt; <span class="number">0</span> And x &lt;= Sheets.<span class="built_in">Count</span> <span class="keyword">Then</span></span><br><span class="line">Intsheet = Sheets(x).<span class="keyword">Name</span></span><br><span class="line">ElseIf x &gt; Sheets.<span class="built_in">Count</span> <span class="keyword">Then</span></span><br><span class="line">MsgBox <span class="string">"超出范围"</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">Application.<span class="keyword">Volatile</span></span><br><span class="line"><span class="keyword">End</span> <span class="function"><span class="keyword">Function</span></span></span><br></pre></td></tr></table></figure></p>
+<p>取当前工作表名称<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">Intsheet</span><span class="params">(<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>取第N个工作表名称<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">Intsheet</span><span class="params">(N)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>N为正整数</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/27/201509007/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/26/tag-plugins/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/27/201509006/" data-title="转载:EXCEL技巧─利用函数获取工作表名" data-url="http://dzcq.gitcafe.io/2015/09/27/201509006/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li> <li><a href="/tags/工作表/">工作表<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法一"><span class="toc-article-text">方法一</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法二"><span class="toc-article-text">方法二</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法三"><span class="toc-article-text">方法三</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#方法四"><span class="toc-article-text">方法四</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

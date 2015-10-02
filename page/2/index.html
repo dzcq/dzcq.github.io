@@ -1,0 +1,595 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第 2 页 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header">
+  <h1>业精于勤荒于嬉</h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
+      <i class="fa fa-heart"></i>
+      好记性不如烂笔头！
+</div>    
+
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-27 </div>
+			<div class="article-title"><a href="/2015/09/27/201509007/" >Excel 2007中新增的多重条件函数</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>　　Excel 2007中增加了AVERAGEIF、AVERAGEIFS、SUMIFS、COUNTIFS和IFERROR五个函数，它们都可以在一定范围内根据条件自行计算。特别是多重条件函数AVERAGEIFS、COUNTIFS和 SUMIFS给我们的工作带来了极大的方便，如在年级段总成绩表中计算各班各科的平均分、及格率和优秀率时，就不用先按班级排序、分班后再计算平均分和两率了。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/27/201509007/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-27 </div>
+			<div class="article-title"><a href="/2015/09/27/201509006/" >转载:EXCEL技巧─利用函数获取工作表名</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <h2 id="方法一">方法一</h2><p>　　常规方法 cell函数<br>　　也可以这样取得工作表名，在任一单元格输入：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">RIGHT</span><span class="params">(CELL(<span class="string">"filename"</span>)</span></span>,<span class="function"><span class="title">LEN</span><span class="params">(CELL(<span class="string">"filename"</span>)</span></span>)-<span class="function"><span class="title">FIND</span><span class="params">(<span class="string">"]"</span>,CELL(<span class="string">"filename"</span>)</span></span>))</span><br></pre></td></tr></table></figure></p>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/27/201509006/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-26 </div>
+			<div class="article-title"><a href="/2015/09/26/tag-plugins/" >Freemind tag-plugins使用方法</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>Hexo Freemind主题 tag-plugins使用方法。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/26/tag-plugins/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-26 </div>
+			<div class="article-title"><a href="/2015/09/26/201509005/" >Github和Gitcafe SSH配置</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>我们如何让本地git项目与远程的github建立联系呢？用SSH keys。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/26/201509005/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-24 </div>
+			<div class="article-title"><a href="/2015/09/24/201509004/" >安装Hexo并部署到GitCafe</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>GitCafe, 感觉就是GitHub的国内版，访问速度比GitHub快，所以选择了它。<br>注册之类的东西就不说啦，操作如下：<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/24/201509004/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-24 </div>
+			<div class="article-title"><a href="/2015/09/24/201509003/" >将hexo博客同时托管到github和gitcafe</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>很多人都把hexo托管到github上，因为github大家都用的比较久了。但是，如果你的博客主要访问者肯定还是国内的用户，国内的用户访问gitcafe比github是要快不少的。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/24/201509003/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-21 </div>
+			<div class="article-title"><a href="/2015/09/21/201509002/" >markdown编辑器语法——字体、字号与颜色</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过类似HTML的标记语法，它可以使普通文本内容具有一定的格式。但是它本身是不支持修改字体、字号与颜色等功能的！接下来要讲的功能就需要使用内嵌HTML的方法来实现。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/21/201509002/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-20 </div>
+			<div class="article-title"><a href="/2015/09/20/201509001/" >win7_x64下安装nodejs</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>win7_X64一直安装node.js不成功，后来查遍了百度，终于成功，记录一下：<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/20/201509001/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-20 </div>
+			<div class="article-title"><a href="/2015/09/20/wp-ID/" >WordPress 4.1.1 文章ID不连续的解决方案</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>WordPress的版本修订历史（revision）、自动保存（autosave）等功能会造成文章的ID不连续 ，让我们这些有强迫症的人感到非常不舒服。本文将介绍在WordPress 4.1.1下如何禁止版本修订、自动保存等问题。<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/20/wp-ID/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-09-19 </div>
+			<div class="article-title"><a href="/2015/09/19/wp-fujian-luanma/" >处理wordpress上传中文名附件乱码问题</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+  
+	<div class="col-md-12">
+	  
+	
+	  <p>wordpress上传中文名附件乱码问题如何解决，在谷歌刨了半天找出一段处理wordpress上传中文名附件乱码问题的代码：<br>
+	
+	</div>
+	
+  
+</div>
+	<a type="button" href="/2015/09/19/wp-fujian-luanma/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+<ul class="pagination">
+	 
+		
+    	<li class="prev"><a href="/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i> 上一页</a></li>
+  		
+
+        <li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+
+		
+          <li class="next disabled"><a>下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>
+        
+	
+</ul>
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div class="form-group has-success has-feedback">
+    <form class="site-search-form">
+        <input type="text" id="st-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control" />
+    </form>
+  </div>  
+
+
+
+		
+			
+	<div class="widget">
+		<h4>分类</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/Wordpress/" title="Wordpress">Wordpress<sup>2</sup></a></li>
+		
+			<li><a href="/categories/excel/" title="excel">excel<sup>10</sup></a></li>
+		
+			<li><a href="/categories/hexo/" title="hexo">hexo<sup>5</sup></a></li>
+		
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/categories/系统相关/" title="系统相关">系统相关<sup>2</sup></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>标签云</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/freemind/" title="freemind">freemind<sup>1</sup></a></li>
+		
+			<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>1</sup></a></li>
+		
+			<li><a href="/tags/gitcafe/" title="gitcafe">gitcafe<sup>3</sup></a></li>
+		
+			<li><a href="/tags/lookup/" title="lookup">lookup<sup>1</sup></a></li>
+		
+			<li><a href="/tags/托管/" title="托管">托管<sup>1</sup></a></li>
+		
+			<li><a href="/tags/wordpress/" title="wordpress">wordpress<sup>2</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>5</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
+		
+			<li><a href="/tags/工作表/" title="工作表">工作表<sup>1</sup></a></li>
+		
+			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
+		
+			<li><a href="/tags/excel/" title="excel">excel<sup>10</sup></a></li>
+		
+			<li><a href="/tags/ssh/" title="ssh">ssh<sup>1</sup></a></li>
+		
+			<li><a href="/tags/tag/" title="tag">tag<sup>1</sup></a></li>
+		
+			<li><a href="/tags/批处理/" title="批处理">批处理<sup>2</sup></a></li>
+		
+			<li><a href="/tags/bat/" title="bat">bat<sup>2</sup></a></li>
+		
+			<li><a href="/tags/查询/" title="查询">查询<sup>1</sup></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2015/09/28/201509017/" ><i class="fa fa-file-o"></i>bat创建桌面快捷方式...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/28/201509016/" ><i class="fa fa-file-o"></i>excel隔行颜色不同...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/28/201509015/" ><i class="fa fa-file-o"></i>比较excel中两列数据是否有存在重复...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/28/201509014/" ><i class="fa fa-file-o"></i>excel中人民币小写转大写...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/28/201509013/" ><i class="fa fa-file-o"></i>批处理解密...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/freemind/" title="Freemind's Github repository." target="_blank"]);">Freemind Theme</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/" title="My Github account." target="_blank"]);">Github</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://dzcq.github.io" title="My Linkin account." target="_blank"]);">My Github</a></li>
+	
+		<li><i class="fa fa-tags"></i><a href="http://wzpan.github.io/hexo-theme-freemind/2014/03/16/tag-plugins-cn/" title="freemind tags Plugins" target="_blank"]);">freemind tags</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>excel中人民币小写转大写 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="在Excel中有时要在统计人民币金额的时候要用到大写金额，可以用下面的方法，可以直接将小写金额变成大写金额，免去了手动输入的繁琐。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="excel中人民币小写转大写"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> excel中人民币小写转大写</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>在Excel中有时要在统计人民币金额的时候要用到大写金额，可以用下面的方法，可以直接将小写金额变成大写金额，免去了手动输入的繁琐。<br><a id="more"></a><br>都是用到了VBA的自定义函数</p>
+<h2 id="函数一">函数一</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">NtoC</span><span class="params">(n0 :real)</span> :</span>String;</span><br><span class="line"><span class="function"><span class="keyword">Function</span> <span class="title">IIF</span><span class="params">(b :boolean; s1,s2:string)</span>:</span>string;</span><br><span class="line">    <span class="keyword">begin</span> <span class="comment">//本函数在VFP和VB中均为系统内部函数</span></span><br><span class="line">      <span class="keyword">if</span> b <span class="keyword">then</span> IIF:=s1 <span class="keyword">else</span> IIF:=s2;</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">Const</span> c = <span class="string">'零壹贰叁肆伍陆柒捌玖◇分角圆拾佰仟万拾佰仟亿拾佰仟万'</span>;</span><br><span class="line"><span class="keyword">var</span> L,i,n, code :integer;</span><br><span class="line">      Z :boolean;</span><br><span class="line">      s, st,st1 :string;</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">s :=FormatFloat( <span class="string">'0.00'</span>, n0);</span><br><span class="line">L :=Length(s);</span><br><span class="line">Z :=n0&lt;<span class="number">1</span>;</span><br><span class="line"><span class="keyword">For</span> i:= <span class="number">1</span> <span class="keyword">To</span> L-<span class="number">3</span> <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      Val(<span class="keyword">Copy</span>(s, L-i-<span class="number">2</span>, <span class="number">1</span>), n, code);</span><br><span class="line">      st:=IIf((n=<span class="number">0</span>)<span class="keyword">And</span>(Z <span class="keyword">Or</span> (i=<span class="number">9</span>)<span class="keyword">Or</span>(i=<span class="number">5</span>)<span class="keyword">Or</span>(i=<span class="number">1</span>)), <span class="string">''</span>, <span class="keyword">Copy</span>(c, n*<span class="number">2</span>+<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">        + IIf((n=<span class="number">0</span>)<span class="keyword">And</span>((i&lt;&gt;<span class="number">9</span>)<span class="keyword">And</span>(i&lt;&gt;<span class="number">5</span>)<span class="keyword">And</span>(i&lt;&gt;<span class="number">1</span>)<span class="keyword">Or</span> Z <span class="keyword">And</span>(i=<span class="number">1</span>)),<span class="string">''</span>,<span class="keyword">Copy</span>(c,(i+<span class="number">13</span>)*<span class="number">2</span>-<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line">        + st;</span><br><span class="line">      Z := (n=<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line">Z := <span class="keyword">False</span>;</span><br><span class="line"><span class="keyword">For</span> i:= <span class="number">1</span> <span class="keyword">To</span> <span class="number">2</span> <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      Val(<span class="keyword">Copy</span>(s, L-i+<span class="number">1</span>, <span class="number">1</span>), n, code);</span><br><span class="line">      st1:= IIf((n=<span class="number">0</span>)<span class="keyword">And</span>((i=<span class="number">1</span>)<span class="keyword">Or</span>(i=<span class="number">2</span>)<span class="keyword">And</span>(Z <span class="keyword">Or</span> (n0&lt;<span class="number">1</span>))), <span class="string">''</span>, <span class="keyword">Copy</span>(c, n*<span class="number">2</span>+<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line">         + IIf((n&gt;<span class="number">0</span>), <span class="keyword">Copy</span>(c,(i+<span class="number">11</span>)*<span class="number">2</span>-<span class="number">1</span>, <span class="number">2</span>), IIf((i=<span class="number">2</span>) <span class="keyword">Or</span> Z, <span class="string">''</span>, <span class="string">'整'</span>))</span><br><span class="line">         + st1;</span><br><span class="line">      Z := (n=<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">For</span> i := <span class="number">1</span> <span class="keyword">To</span> Length(st) <span class="keyword">do</span> <span class="keyword">If</span> <span class="keyword">Copy</span>(st, i, <span class="number">4</span>) = <span class="string">'亿万'</span> <span class="keyword">Then</span> Delete(st,i+<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">NtoC := IIf( n0=<span class="number">0</span>, <span class="string">'零'</span>, st + st1);</span><br><span class="line"><span class="keyword">End</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="函数二">函数二</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NumToChar</span><span class="params">(<span class="keyword">const</span> n: Real)</span>:</span> string; <span class="comment">//可以到万亿，并且可以随便扩大范围</span></span><br><span class="line">     <span class="keyword">const</span></span><br><span class="line">     cNum: WideString = <span class="string">'零壹贰叁肆伍陆柒捌玖--万仟佰拾亿仟佰拾万仟佰拾元角分'</span>;</span><br><span class="line">     cCha:<span class="keyword">array</span>[<span class="number">0</span>..<span class="number">1</span>, <span class="number">0</span>..<span class="number">12</span>]<span class="keyword">of</span> string = (( <span class="string">'零元'</span>,<span class="string">'零拾'</span>,<span class="string">'零佰'</span>,<span class="string">'零仟'</span>,<span class="string">'零万'</span>,<span class="string">'零亿'</span>,<span class="string">'亿万'</span>,<span class="string">'零零零'</span>,<span class="string">'零零'</span>,<span class="string">'零万'</span>,<span class="string">'零亿'</span>,<span class="string">'亿万'</span>,<span class="string">'零元'</span>), ( <span class="string">'元'</span>,<span class="string">'零'</span>,<span class="string">'零'</span>,<span class="string">'零'</span>,<span class="string">'万'</span>,<span class="string">'亿'</span>,<span class="string">'亿'</span>,<span class="string">'零'</span>,<span class="string">'零'</span>,<span class="string">'万'</span>,<span class="string">'亿'</span>,<span class="string">'亿'</span>,<span class="string">'元'</span>));</span><br><span class="line">     <span class="keyword">var</span></span><br><span class="line">      i : Integer;</span><br><span class="line">     sNum,sTemp : WideString;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">     <span class="keyword">result</span> :=<span class="string">''</span>;</span><br><span class="line">     sNum := format(<span class="string">'%15d'</span>,[round(n * <span class="number">100</span>)]);</span><br><span class="line">     <span class="keyword">for</span> i := <span class="number">0</span> <span class="keyword">to</span> <span class="number">14</span> <span class="keyword">do</span></span><br><span class="line">     <span class="keyword">begin</span></span><br><span class="line">     stemp := <span class="keyword">copy</span>(snum,i+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">     <span class="keyword">if</span> stemp=<span class="string">' '</span> <span class="keyword">then</span> <span class="keyword">continue</span></span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">result</span> := <span class="keyword">result</span> + cNum[strtoint(stemp)+<span class="number">1</span>] + cNum[i+<span class="number">13</span>];</span><br><span class="line">     <span class="keyword">end</span>;</span><br><span class="line">     <span class="keyword">for</span> i:= <span class="number">0</span> <span class="keyword">to</span> <span class="number">12</span> <span class="keyword">do</span></span><br><span class="line">     <span class="keyword">Result</span> := StringReplace(<span class="keyword">Result</span>, cCha[<span class="number">0</span>,i], cCha[<span class="number">1</span>,i], [rfReplaceAll]);</span><br><span class="line">     <span class="keyword">if</span> pos(<span class="string">'零分'</span>,<span class="keyword">result</span>)=<span class="number">0</span></span><br><span class="line">     <span class="keyword">then</span> <span class="keyword">Result</span> := StringReplace(<span class="keyword">Result</span>, <span class="string">'零角'</span>, <span class="string">'零'</span>, [rfReplaceAll])</span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">Result</span> := StringReplace(<span class="keyword">Result</span>, <span class="string">'零角'</span>,<span class="string">'整'</span>, [rfReplaceAll]);</span><br><span class="line">     <span class="keyword">Result</span> := StringReplace(<span class="keyword">Result</span>, <span class="string">'零分'</span>,<span class="string">''</span>, [rfReplaceAll]);</span><br><span class="line">    <span class="keyword">end</span>;</span><br></pre></td></tr></table></figure>	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/28/201509015/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/28/201509013/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/28/201509014/" data-title="excel中人民币小写转大写" data-url="http://dzcq.gitcafe.io/2015/09/28/201509014/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-28 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#函数一"><span class="toc-article-text">函数一</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#函数二"><span class="toc-article-text">函数二</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

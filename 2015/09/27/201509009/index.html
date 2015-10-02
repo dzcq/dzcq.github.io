@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Excel最后一行的查找与选择方法 | 半个我的Hexo</title>
+  <meta name="author" content="CaoQing">
+  
+  <meta name="description" content="在ExcelVBA中，使用End(xlUp)查找最后一行是最常使用且最为简单的方法，它假设要有一列总包含有数据(数字、文本和公式等)，并且在该列中最后输入数据的单元格的下一行不会包含数据，因此不必担心会覆盖掉已有数据。但该方法有两个缺点：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Excel最后一行的查找与选择方法"/>
+  <meta property="og:site_name" content="半个我的Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="半个我的Hexo" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?32b552fe39b17bb112fe97cb053a9269";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">半个我的Hexo</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="">
+			  <i class="fa fa-rss"></i>订阅RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> Excel最后一行的查找与选择方法</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+			
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>在ExcelVBA中，使用End(xlUp)查找最后一行是最常使用且最为简单的方法，它假设要有一列总包含有数据(数字、文本和公式等)，并且在该列中最后输入数据的单元格的下一行不会包含数据，因此不必担心会覆盖掉已有数据。但该方法有两个缺点：<br><a id="more"></a><br>(1) 仅局限于查找指定列的最后一行。<br>(2) 如果该列中最后一行被隐藏，那么该隐藏行将被视作最后一行。因此，在最后一行被隐藏时，其数据可能会被覆盖。但该列中间的隐藏行不会影响查找的结果。<br><!--more--></p>
+<h2 id="[示例代码01]">[示例代码01]</h2><p>A列有数据的最后一行<br><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> EndxlUp_OneColLastRow()</span><br><span class="line"> <span class="keyword">If</span> Range(<span class="string">"A"</span> &amp; Rows.Count).<span class="keyword">End</span>(xlUp) = <span class="literal">Empty</span> <span class="keyword">Then</span> <span class="keyword">GoTo</span> Finish</span><br><span class="line"> <span class="comment">'获取最后一行'</span></span><br><span class="line"><span class="built_in">MsgBox</span> <span class="string">"最后一行是第"</span> &amp; Range(<span class="string">"A"</span> &amp; Rows.Count).<span class="keyword">End</span>(xlUp).Row &amp; <span class="string">"行."</span></span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Sub</span></span><br><span class="line">Finish:</span><br><span class="line"><span class="built_in">MsgBox</span> <span class="string">"没有发现公式或数据! "</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="[示例代码02]">[示例代码02]</h2><p>直接跳转至A最后一行<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sub NextRowInColumnUsedAsSub() <span class="string">'包含所有数据和公式，忽略隐藏的最后一行'</span></span><br><span class="line"><span class="keyword">Range</span>(<span class="string">"A"</span> &amp; <span class="keyword">Range</span>(<span class="string">"A"</span> &amp; Rows.<span class="keyword">Count</span>).<span class="keyword">End</span>(xlUp).<span class="keyword">Row</span> + <span class="number">1</span>).<span class="keyword">Select</span></span><br><span class="line"> <span class="keyword">End</span> Sub</span><br></pre></td></tr></table></figure></p>
+<h2 id="[示例代码03]">[示例代码03]</h2><p>直接跳转至A最后一行<br><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sub NextRowInColumnUsedAsFunction()</span><br><span class="line"><span class="string">'包含所有数据和公式，忽略隐藏的最后一行'</span></span><br><span class="line"><span class="keyword">Range</span>(<span class="string">"A"</span> &amp; LastRowInColumn(<span class="string">"A"</span>) + <span class="number">1</span>).<span class="keyword">Select</span></span><br><span class="line"><span class="keyword">End</span> Sub</span><br><span class="line"> <span class="string">'- - - - - - - - - - - - - - - - - - - - - - - - -'</span></span><br><span class="line"> Public <span class="keyword">Function</span> LastRowInColumn(<span class="keyword">Column</span> As <span class="keyword">String</span>) As Long</span><br><span class="line">   LastRowInColumn = <span class="keyword">Range</span>(<span class="keyword">Column</span> &amp; Rows.<span class="keyword">Count</span>).<span class="keyword">End</span>(xlUp).<span class="keyword">Row</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Function</span></span><br></pre></td></tr></table></figure></p>
+<p>注意，要输入新数据的列可能与我们所查找最后一行时所使用的列不同，例如，在上例中，我们可以修改为在B列中查找该列的最后一行，而在A列相应行的下一行中输入新的数据。</p>
+<p><strong><code>使用Find方法</code></strong><br> Find方法在当前工作有数据中进行查找，不需要指定列，也可以确保不会意外地覆盖掉已有数据。其中，参数LookIn指定所查找的类型，有三个常量可供选择，即xlValues、xlFormulas和xlComments。<br>(1) 常量xlFormulas将包含零值的单元格作为有数据的单元格。(当设置零值不显示时，该单元格看起来为空，但该参数仍将该单元格视为有数据的单元格)<br>(2) 常量xlValues将包含零值的单元格(如果设置零值不显示时)作为空白单元格，此时，若该单元格在最后一行，则Find方法会认为该单元格所在的行为空行，因此，该单元格中的内容可能会被新数据所覆盖。 [注：在Excel中，选择菜单”工具”——“选项”，在打开的”选项”对话框中，选择”视图”选项卡，将其中的”零值”前的复选框取消选中，则工作表中的零值都不会显示]<br>如果在参数LookIn中使用常量xlValues的话，还存在一个问题是：如果您将最后一行隐藏，则Find方法会认为倒数第二行是最后一行，此时您在最后一行的下一行输入数据，则会将实际的最后一行的数据覆盖。 您可以在隐藏最后一行与不隐藏最后一行，或者是最后一行显示零值与不显示零值时，运行下面的示例代码04，看看所得的结果有什么不同。</p>
+<h2 id="[示例代码04]">[示例代码04]</h2><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> Find_LastRowxlValues()</span><br><span class="line"><span class="keyword">On</span> <span class="keyword">Error</span> <span class="keyword">GoTo</span> Finish</span><br><span class="line"> <span class="comment">'获取最后一行'</span></span><br><span class="line"> <span class="built_in">MsgBox</span> <span class="string">"最后一行是第"</span> &amp; Cells.Find(<span class="string">"*"</span>, _</span><br><span class="line">       SearchOrder:=xlByRows, LookIn:=xlValues, _</span><br><span class="line">       SearchDirection:=xlPrevious).EntireRow.Row &amp; <span class="string">"行"</span></span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Sub</span></span><br><span class="line"> Finish:</span><br><span class="line"><span class="built_in">MsgBox</span> <span class="string">"没有发现数值！"</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+<p>因此，在使用Find方法时，您应该考虑所选参数设置的常量，以及工作表最后一行是否有可能被隐藏或不显示零值。如果您忽视这些情况，很可能得不到您想要的结果，或者是覆盖掉已有数据。使用常量xlFormulas可以避免这个问题，如下面的示例代码05所示。</p>
+<h2 id="[示例代码05]">[示例代码05]</h2><figure class="highlight mathematica"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Sub NextRowUsedAsSub() <span class="string">'选取最后一行的下一行'</span></span><br><span class="line"><span class="keyword">Range</span>(<span class="string">"A"</span> &amp; <span class="keyword">Cells</span>.<span class="keyword">Find</span>(<span class="string">"*"</span>,LookIn:=xlFormulas, SearchDirection:=xlPrevious).<span class="keyword">Row</span> + <span class="number">1</span>).<span class="keyword">Select</span></span><br><span class="line"><span class="keyword">End</span> Sub</span><br></pre></td></tr></table></figure>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/2015/09/27/201509010/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+  		
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/2015/09/27/201509008/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="2015/09/27/201509009/" data-title="Excel最后一行的查找与选择方法" data-url="http://dzcq.gitcafe.io/2015/09/27/201509009/"></div>  
+  
+</section>
+
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-09-27 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/excel/">excel<span>10</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/excel/">excel<span>10</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 CaoQing
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'eGc2BF5pQbXCYbZw1PQq','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dzcq' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
