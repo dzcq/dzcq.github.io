@@ -4,7 +4,7 @@
   <subtitle><![CDATA[业精于勤荒于嬉]]></subtitle>
   <link href="//atom.xml" rel="self"/>
   <link href="http://dzcq.gitcafe.io/"/>
-  <updated>2015-09-28T14:31:25.412Z</updated>
+  <updated>2015-10-04T13:03:47.150Z</updated>
   <id>http://dzcq.gitcafe.io/</id>
   
   <author>
@@ -13,6 +13,173 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[archlinux安装过程]]></title>
+    <link href="http://dzcq.gitcafe.io/2015/10/04/archlinux-build/"/>
+    <id>http://dzcq.gitcafe.io/2015/10/04/archlinux-build/</id>
+    <published>2015-10-04T09:15:46.000Z</published>
+    <updated>2015-10-04T13:03:47.150Z</updated>
+    <content type="html"><![CDATA[<p>windows7下安装arch-linux双系统：<br><a id="more"></a></p>
+<h2 id="安装">安装</h2><p>安装方法有：<br>1.下载安装包后刻光盘录盘（或U盘），然后重启，设置BOOT，启动光盘（U盘）来执行安装<br>2.使用EasyBCD(或grub4dos)来编写MBR启动<br>由于我刻录U盘安装的方法老不成功，于是我是使用EasyBCD来安装的：<br>1.准备一个空的磁盘，格式化为FAT32格式，然后把镜像里面的VMLINUZ和ARCHISO.IMG找出来，放到该盘根目录下<br>2.把镜像文件也放到这个盘的根目录下<br>3.启动EasyBCD，选择NeoGrub引导，然后点配置，输入如下内容：</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title install-archlinux</span><br><span class="line"><span class="function"><span class="title">rootnoverify</span> <span class="params">(hd0,<span class="number">6</span>)</span></span><br><span class="line"><span class="title">kernel</span> <span class="params">(hd0,<span class="number">6</span>)</span>/<span class="title">vmlinuz</span> <span class="title">archisolabel</span>=ARCH_201309</span><br><span class="line"><span class="title">initrd</span> <span class="params">(hd0,<span class="number">6</span>)</span>/<span class="title">archiso</span>.<span class="title">img</span></span><br><span class="line"><span class="title">boot</span></span></span><br></pre></td></tr></table></figure>
+<p>注意，hd0,6指的是你放镜像那个盘的盘好，我这里是第6个，你自己相对修改，关于这个盘符规则不懂的可以自己百度</p>
+<p>4.重启，进入install-archlinux，进入安装<br>如果加载成功，会直接给出一个进入了root的终端<br>如果加载失败，那么就需要手动加载，输入如下命令即可加载：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmpmnt</span><br><span class="line">mount -r -o defaults <span class="regexp">/dev/</span>sda6 /tmpmnt</span><br><span class="line">modprobe loop</span><br><span class="line">losetup <span class="regexp">/dev/</span>loop6 <span class="regexp">/tmpmnt/</span>archlinux.iso</span><br><span class="line">ln -s <span class="regexp">/dev/</span>loop6 <span class="regexp">/dev/</span>disk<span class="regexp">/by-label/</span>archlinux</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>其中/dev/sda6为磁盘的盘号，根据自己系统而定<br>随后我们会加载进入一个带有root的终端<br>好，接下来，我们就开始操作安装啦~</p>
+<p>5.分区，分好空间大小</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk <span class="regexp">/dev/</span>sda</span><br></pre></td></tr></table></figure>
+<p>分盘要注意,步骤：</p>
+<p>6.格式化盘的文件系统格式</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs -t ext4 <span class="regexp">/dev/</span>sda8</span><br></pre></td></tr></table></figure>
+<p>7.格式化swap分区并启用：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkswap <span class="regexp">/dev/</span>sda6</span><br><span class="line">swapon <span class="regexp">/dev/</span>sda6</span><br></pre></td></tr></table></figure>
+<p>8.挂在设想的根目录，即/，把它挂在/mnt下，arch-linux是把/mnt作为安装目录的</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>sda8 <span class="regexp">/mnt</span></span><br></pre></td></tr></table></figure>
+<p>如果有需要其他的分盘，就在挂载后，在/mnt里面建立文件，如home,var等，然后分别挂在到这些路径下去.<br>9.连接网络<br>archlinux的安装是需要连网的<br>一般的，如果是有线网络，直接使用命令dpcp即可</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dhcpcd</span><br></pre></td></tr></table></figure>
+<p>如果是无线网络，则使用wpa工具</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wpa_passphase <span class="string">"无线ssid"</span> <span class="string">"密码"</span> &gt;&gt; /etc/wpa_supplicant<span class="class">.conf</span>  </span><br><span class="line">wpa_supplicant -B -Dwext -<span class="tag">i</span> wlan0 -c /etc/wpa_supplicant<span class="class">.conf</span>  </span><br><span class="line">dhcpcd</span><br></pre></td></tr></table></figure>
+<p>当然，如果是其他特殊网络环境，就自己百度去吧<br>10.设置镜像站点<br>如果使用默认的镜像站点，安装会很慢，设置如下：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano <span class="regexp">/etc/</span>pacman.d<span class="regexp">/mirrorlist</span></span><br></pre></td></tr></table></figure>
+<p>尽量在前面加入网易和搜狐的站点：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.<span class="number">163</span>.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span>  </span><br><span class="line">Server = http://mirrors.sohu.com/archlinux/<span class="variable">$repo</span>/os/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<p>$arch表示系统版本，可以使用i686(32位)获x86_64(64位)<br>11.安装基本系统和编译工具、网络基础工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacstrap /mnt base base-devel net-tools</span><br></pre></td></tr></table></figure>
+<p>12.生成fstab文件供系统引导时自动挂载</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genfstab -p /mnt <span class="prompt">&gt;&gt; </span>/mnt/etc/fstab</span><br></pre></td></tr></table></figure>
+<p>13.安装grub程序：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacstrap</span> /mnt grub-bios</span><br></pre></td></tr></table></figure>
+<p>EFI的PC用如下命令</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacstrap</span> /mnt grub-efi-i386</span><br></pre></td></tr></table></figure>
+<p>14.chroot到/mnt</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arch-<span class="keyword">chroot</span> /mnt</span><br></pre></td></tr></table></figure>
+<p>转移成功后，SHELL的提示信息会改变</p>
+<p>15.编辑主机名</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo arch-linux <span class="prompt">&gt;&gt; </span>/etc/hostname</span><br></pre></td></tr></table></figure>
+<p>16.编辑/etc/locale.gen，选择文字编码</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano <span class="regexp">/etc/</span>locale.gen</span><br></pre></td></tr></table></figure>
+<p>将如下字符集前的井号删除</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">en_US<span class="class">.UTF-8</span></span><br><span class="line">zh_CN<span class="class">.GB2312</span></span><br><span class="line">zh_CN<span class="class">.GB18030</span></span><br><span class="line">zh_CN<span class="class">.UTF-8</span></span><br><span class="line">zh_CN.GBK</span><br></pre></td></tr></table></figure>
+<p>17.生成新的字符集匹配文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale-gen</span><br></pre></td></tr></table></figure>
+<p>18.创建引导linux内核的初始环境</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkinitcpio -<span class="tag">p</span> linux</span><br></pre></td></tr></table></figure>
+<p>19.生成grub配置文件，如果你还装了windows，建议先安装os-prober，然后再生成配置文件。</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S os-prober</span><br><span class="line">grub-mkconfig -o <span class="regexp">/boot/g</span>rub<span class="regexp">/grub.cfg</span></span><br></pre></td></tr></table></figure>
+<p>20.设置grub-install到/dev/sda</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-<span class="keyword">install</span> /dev/sda</span><br></pre></td></tr></table></figure>
+<p>21.修改root密码</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p>22.创建常用用户</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -m <span class="function"><span class="title">accountname</span><span class="params">(用户名)</span></span></span><br><span class="line">passwd <span class="function"><span class="title">accountname</span><span class="params">(用户名)</span></span></span><br></pre></td></tr></table></figure>
+<p>23.设置常用用户可以使用sudo命令</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano <span class="regexp">/etc/</span>sudoers</span><br></pre></td></tr></table></figure>
+<p>加入</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">accountname</span> <span class="literal">ALL</span>=(<span class="literal">ALL</span>) <span class="literal">ALL</span></span><br></pre></td></tr></table></figure>
+<p>24.安装bash自动补全包</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S bash-completion</span><br></pre></td></tr></table></figure>
+<p>25.使用yaourt安装aur库软件<br>最简单安装Yaourt的方式是添加Yaourt源至您的 <code>/etc/pacman.conf</code>:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[archlinuxcn]</span></span><br><span class="line"><span class="comment">#The Chinese Arch Linux communities packages.</span></span><br><span class="line"><span class="setting">SigLevel = <span class="value">Optional TrustedOnly</span></span></span><br><span class="line"><span class="setting">Server = <span class="value">http://repo.archlinuxcn.org/<span class="variable">$arch</span></span></span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxfr]Server = http://repo.archlinux.fr/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[archlinuxfr] Server = http://repo-fr.archlinuxcn.org/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure>
+<p>同步并安装：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Syu yaourt</span><br></pre></td></tr></table></figure>
+<p>26.退出chroot，卸载/mnt.</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">exit</span></span><br><span class="line">umount /mnt/home</span><br><span class="line">umount /mnt</span><br></pre></td></tr></table></figure>
+<p>至此，一个没有X的archlinux已经安装在你的硬盘上了，接下来要做的就是安装X，桌面环境和其他日常用应用程序了。</p>
+<h2 id="安装常用软件及基本配置">安装常用软件及基本配置</h2><p>下面我来说一说X Windows和一些常用软件的安装与配置,用新用户登录：<br>1.安装音频处理</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S alsa-utils</span><br></pre></td></tr></table></figure>
+<p>使用alsamixer调节音量，按M静音</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alsamixer</span><br></pre></td></tr></table></figure>
+<p>安装完后输入如下命令试试能否听到音乐，听到则安装成功：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aplay <span class="regexp">/usr/</span>share<span class="regexp">/sounds/</span>alsa<span class="regexp">/Rear_Center.wav</span></span><br></pre></td></tr></table></figure>
+<p>2.安装视频处理<br>首先安装xorg和mesa，mesa为OpenGL的克隆，用于处理3D应用</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S xorg xorg-xinit mesa</span><br></pre></td></tr></table></figure>
+<p>然后安装显卡驱动<br>可以输入如下命令查找适合自己的显卡驱动</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Ss xf86-video</span><br></pre></td></tr></table></figure>
+<p>找到后选择合适的安装吧，例如我的是ATI显卡的，安装命令如下：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S xf86-video-ati</span><br></pre></td></tr></table></figure>
+<p>3.安装rar等解压工具</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S unrar unzip p7zip</span><br></pre></td></tr></table></figure>
+<p>4.安装桌面系统<br>我选择安装了GNOME:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -S gnome  gnome-extra</span><br><span class="line">Pacman -S gdm</span><br><span class="line">cp <span class="regexp">/etc/</span>X11<span class="regexp">/xinit/</span>xinitrc ~<span class="regexp">/.xinitrc</span></span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> gdm.service</span><br></pre></td></tr></table></figure>
+<p>从控制台启动GNOME，在~/.xinitrc中添加如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span> gnome-session</span><br></pre></td></tr></table></figure>
+<p>中文化设置，在~/.xinitrc前面添加</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> LANG=zh_CN.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">export</span> LANGUAGE=zh_CN:en_US</span><br><span class="line"><span class="keyword">export</span> LC_CTYPE=en_US.UTF-<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>对于特定用户，还可以在<code>~/.bashrc</code> <code>~/.xinitrc</code>或<code>~/.xprofile</code>中设置自己的用户环境。不同之处在于：</p>
+<blockquote>
+<p>bashrc: 每次终端登录时读取并运用里面的设置。</p>
+<p>xinitrc: 每次startx启动X界面时读取并运用里面的设置</p>
+<p>xprofile: 每次使用gdm等图形登录时读取并运用里面的设置,再加上<code>export LC_ALL=zh_CN.UTF-8</code></p>
+</blockquote>
+<p>单独在图形界面启用中文locale<br>不推荐<code>/etc/locale.conf</code>使用全局中文locale，会导致tty乱码。<br>如前面所说，可以在<code>~/.xinitrc</code>或<code>~/.xprofile</code>单独设置中文locale。添加如下内容到上述文件最前端注释之后（如果不确定使用哪个文件，可以都添加）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> LANG=zh_CN.UTF-<span class="number">8</span></span><br><span class="line"><span class="keyword">export</span> LANGUAGE=zh_CN:en_US</span><br><span class="line"><span class="keyword">export</span> LC_CTYPE=en_US.UTF-<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<p>并执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Locale-gen</span><br></pre></td></tr></table></figure>
+<p>5.安装桌面电源管理</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S gnome-<span class="keyword">power</span>-maneger</span><br></pre></td></tr></table></figure>
+<p>6.安装视频播放器</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S vlc audacious</span><br></pre></td></tr></table></figure>
+<p>7.安装flash</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S flashplugin</span><br></pre></td></tr></table></figure>
+<p>8.安装个火狐浏览器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pancman -S firefox firefox-i18n-zh-cn</span><br></pre></td></tr></table></figure>
+<p>10.设置开机自动启动networkmanager服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> networkmanager.sevice</span><br></pre></td></tr></table></figure>
+<p>11.安装ibus输入法</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S ibus ibus-sunpinyin ibus-<span class="keyword">table</span>-chinese</span><br></pre></td></tr></table></figure>
+<p>12.安装终端模拟器</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S xterm</span><br></pre></td></tr></table></figure>
+<p>13.smaba共享</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S smbclient gvfs-smb</span><br></pre></td></tr></table></figure>
+<p>14.中文字体的安装<br>archlinux默认安装的中文字体实在是太丑了，顶不住了，我们现在安装一个新的字体<br>首先，我们先要安装字体，wiki上面说了几种字体，就自己选一个去安装吧</p>
+<p><code>ttf-tw</code> -（繁體字）國字標準字體（楷書／宋體）母稿——中華民國教育部(AUR)</p>
+<p><code>wqy-microhei</code> - 一种Sans-Serif风格的高质量CJK轮廓字体。”(AUR)</p>
+<p><code>wqy-zenhei</code> - 嵌入点阵宋体的黑体风格(sans-serif)中文轮廓字体(也支持部分日文和韩文)</p>
+<p><code>ttf-arphic-ukai</code> - 楷體 Kaiti (brush stroke) unicode TTFonts (建议开启抗锯齿)</p>
+<p><code>ttf-arphic-uming</code> - 明體 Mingti (打印) unicode TTFonts （必装）</p>
+<p><code>opendesktop-fonts</code> -新宋 字体, 之前是 ttf-fireflysung 软件包</p>
+<p><code>wqy-bitmapfont</code> - 中文点阵宋体(serif)</p>
+<p><code>ttf-hannom</code> - 中文和越南文TrueType字体</p>
+<p>比如我安装了黑体字体</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S wqy-microhei ttf-arphic-uming</span><br><span class="line">yaourt -S cairo-ubuntu</span><br></pre></td></tr></table></figure>
+<p>用gnome-tweak-tools(优化工具)调整字体如下：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/archlinux-build-01.png" alt=""></p>
+<p>15.删除多余的游戏：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Rsn gnome-builder devhelp quadrapasstl lightoff gnome-chess <span class="constant">five</span>-<span class="operator">or</span>-move gnome-mines iagno gnome-robots hitorl gnome-tetravex swell-foop tali accerciser aisleriot anjuta gitg polari gnome-maps gnome-music gnome-mahjongg gnome-weather <span class="constant">four</span>-<span class="operator">in</span>-<span class="operator">a</span>-row atomix</span><br></pre></td></tr></table></figure>
+<p>16.安装百度云：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> pacman -S bcloud</span><br></pre></td></tr></table></figure>
+<p>17.GRUB背景图像和点阵字体<br>GRUB原生支持设置背景图像和点阵字体(以pf2格式).grub包含unifont字体,名为unicode.pf2.(也有可能只包含名为ascii.pf2的ASCII字符字体)<br>GRUB支持的图像格式有tga,png,jpeg.所支持的最大图像分辨率跟硬件有关.<br>Make sure you have set up the proper framebuffer resolution. 请确保你已经设定了合适的帧缓冲分辨率<br>编辑<code>/etc/default/grub</code>:</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">GRUB_BACKGROUND=<span class="value"><span class="string">"/boot/grub/myimage"</span></span></span></span><br><span class="line"><span class="comment">#GRUB_THEME="/path/to/gfxtheme"</span></span><br><span class="line"><span class="setting">GRUB_FONT=<span class="value"><span class="string">"/path/to/font.pf2"</span></span></span></span><br></pre></td></tr></table></figure>
+<p>Note: 如果你将GRUB安装在单独的分区上, <code>/boot/grub/myimage</code> 应该改为 <code>/grub/myimage</code>.<br>修改字体大小：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">Grub-mkfont</span> <span class="tag">-s</span> 20 <span class="tag">-o</span> <span class="tag">unicode</span><span class="class">.pf2</span> <span class="tag">simsun</span><span class="class">.ttc</span></span><br></pre></td></tr></table></figure>
+<p>-s 20 为字体大小<br>重新生成配置文件:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub-mkconfig -o <span class="regexp">/boot/g</span>rub<span class="regexp">/grub.cfg</span></span><br></pre></td></tr></table></figure>
+<p>如果成功的添加了背景图片,那么用户会在命令行中看到<code>&quot;Found background image...&quot;</code>. 如果没有看到<code>&quot;Found background image...&quot;</code>,图像信息就可能没有嵌入<code>grub.cfg</code>中了.</p>
+<p>如果图像没有正确显示,执行如下检查:</p>
+<p>在<code>/etc/default/grub</code>里,图像的路径和名字是否正确</p>
+<p>图像的大小和格式是否合适(tga,png,8-bit jpg)</p>
+<p>图像是不是以RGB模式存储,是不是没有索引</p>
+<p><code>/etc/default/grub</code>里面是不是没有开启console模式</p>
+<p>是否执行<code>grub-mkconfig</code>以重新生成配置文件</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>windows7下安装arch-linux双系统：<br>]]>
+    
+    </summary>
+    
+      <category term="arch" scheme="http://dzcq.gitcafe.io/tags/arch/"/>
+    
+      <category term="linux" scheme="http://dzcq.gitcafe.io/tags/linux/"/>
+    
+      <category term="archlinux" scheme="http://dzcq.gitcafe.io/categories/archlinux/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[bat创建桌面快捷方式]]></title>
@@ -319,13 +486,14 @@
     <link href="http://dzcq.gitcafe.io/2015/09/27/201509008/"/>
     <id>http://dzcq.gitcafe.io/2015/09/27/201509008/</id>
     <published>2015-09-27T06:59:58.000Z</published>
-    <updated>2015-09-28T14:56:08.359Z</updated>
+    <updated>2015-10-02T15:45:57.000Z</updated>
     <content type="html"><![CDATA[<p>Excel中应用条件的时候比较多，方法也不只一种，下面记录两种最简单、最常用的方法：<br><a id="more"></a></p>
-<h2 id="方法一">方法一</h2><h3 id="用lookup函数">用lookup函数</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">2</span>,<span class="number">1</span>/(条件)</span></span>,查找数组或区域)</span><br><span class="line">或</span><br><span class="line"><span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">1</span>,<span class="number">0</span>/(条件)</span></span>,查找数组或区域)</span><br></pre></td></tr></table></figure>
-<p>返回最后一个满足条件的数据<br>多条件：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOOKUP<span class="list">(<span class="number">1</span>,<span class="number">0</span>/<span class="list">(<span class="list">(条件<span class="number">1</span>)</span><span class="variable">*(条件2)*</span><span class="list">(条件N)</span>)</span>,查找数组或区域)</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="方法一">方法一</h2><h3 id="用lookup函数">用lookup函数</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">=<span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">2</span>,<span class="number">1</span>/(条件)</span></span>,查找数组或区域)</span><br><span class="line">或</span><br><span class="line">=<span class="function"><span class="title">LOOKUP</span><span class="params">(<span class="number">1</span>,<span class="number">0</span>/(条件)</span></span>,查找数组或区域)</span><br></pre></td></tr></table></figure>
+<p>返回最后一个满足条件的数据<br>多条件：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=LOOKUP<span class="list">(<span class="number">1</span>,<span class="number">0</span>/<span class="list">(<span class="list">(条件<span class="number">1</span>)</span><span class="variable">*(条件2)*</span><span class="list">(条件N)</span>)</span>,查找数组或区域)</span></span><br></pre></td></tr></table></figure></p>
 <p>Lookup多区间判断<br>下图中，在C2单元格输入以下公式，向下复制即可。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=LOOKUP(B2,&#123;<span class="number">0</span>,<span class="number">50</span>,<span class="number">60</span>,<span class="number">75</span>,<span class="number">85</span>,<span class="number">96</span>;<span class="string">"很差"</span>,<span class="string">"差"</span>,<span class="string">"一般"</span>,<span class="string">"较好"</span>,<span class="string">"优秀"</span>,<span class="string">"能手"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509008-1.PNG" alt="图1"></p>
-<h2 id="方法二">方法二</h2><h3 id="Index+Match">Index+Match</h3><p>返回第一个满足条件的数据<br>如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509008-2.png" alt="图２"><br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="ruby"><span class="constant">INDEX</span>(<span class="constant">C2</span><span class="symbol">:C13</span>,<span class="constant">MATCH</span>(<span class="number">1</span>,(<span class="constant">A2</span><span class="symbol">:A13=F3</span>)*(<span class="constant">B2</span><span class="symbol">:B13=G3</span>),<span class="number">0</span>))</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二">方法二</h2><h3 id="Index+Match">Index+Match</h3><p>返回第一个满足条件的数据<br>如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201509008-2.png" alt="图２"></p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=<span class="ruby"><span class="constant">INDEX</span>(<span class="constant">C2</span><span class="symbol">:C13</span>,<span class="constant">MATCH</span>(<span class="number">1</span>,(<span class="constant">A2</span><span class="symbol">:A13=F3</span>)*(<span class="constant">B2</span><span class="symbol">:B13=G3</span>),<span class="number">0</span>))</span></span><br></pre></td></tr></table></figure>
 <p><code>INDEX(C2:C13．．．</code>　是指查询范围，<br>MATCH(1,(A2:A13=F3)<em>(B2:B13=G3),0)是指查询的条件。<br>MATCH(1,(A2:A13=F3)</em>(B2:B13=G3),0)：<br>1、第一参数1，就是数字1；<br>2、第二参数(A2:A13=F3)<em>(B2:B13=G3)——得到的是由1和0组成的常数数组（两个等式对应位置都是true，相乘得1，有一个是false便得0）<br>3、整个公式段`MATCH(1,(A2:A13=F3)</em>(B2:B13=G3),0)`——在这个数组中找到首次出现1的位置，由于数组是非严格升序的（比如可能是间隔着出现1和0），所以第三参数采用0，精确查找。</p>
 <h2 id="区别">区别</h2><p>两种方法的区别就是：<br>Lookup得到的结果是 返回最后一个满足条件的数据<br>Index+Match得到的结果是 返回第一个满足条件的数据</p>
 ]]></content>
@@ -753,27 +921,6 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>WordPress的版本修订历史（revision）、自动保存（autosave）等功能会造成文章的ID不连续 ，让我们这些有强迫症的人感到非常不舒服。本文将介绍在WordPress 4.1.1下如何禁止版本修订、自动保存等问题。<br>]]>
-    
-    </summary>
-    
-      <category term="wordpress" scheme="http://dzcq.gitcafe.io/tags/wordpress/"/>
-    
-      <category term="Wordpress" scheme="http://dzcq.gitcafe.io/categories/Wordpress/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[处理wordpress上传中文名附件乱码问题]]></title>
-    <link href="http://dzcq.gitcafe.io/2015/09/19/wp-fujian-luanma/"/>
-    <id>http://dzcq.gitcafe.io/2015/09/19/wp-fujian-luanma/</id>
-    <published>2015-09-19T13:59:40.000Z</published>
-    <updated>2015-09-21T05:21:49.013Z</updated>
-    <content type="html"><![CDATA[<p>wordpress上传中文名附件乱码问题如何解决，在谷歌刨了半天找出一段处理wordpress上传中文名附件乱码问题的代码：<br><a id="more"></a></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">upload_file</span><span class="params">(<span class="variable">$filename</span>)</span> </span>&#123;</span><br><span class="line"><span class="variable">$parts</span> = explode(<span class="string">'.'</span>, <span class="variable">$filename</span>);</span><br><span class="line"><span class="variable">$filename</span> = array_shift(<span class="variable">$parts</span>);</span><br><span class="line"><span class="variable">$extension</span> = array_pop(<span class="variable">$parts</span>);</span><br><span class="line"><span class="keyword">foreach</span> ( (<span class="keyword">array</span>) <span class="variable">$parts</span> <span class="keyword">as</span> <span class="variable">$part</span>)</span><br><span class="line"><span class="variable">$filename</span> .= <span class="string">'.'</span> . <span class="variable">$part</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">'/[一-龥]/u'</span>, <span class="variable">$filename</span>))&#123;</span><br><span class="line"><span class="variable">$filename</span> = md5(<span class="variable">$filename</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$filename</span> .= <span class="string">'.'</span> . <span class="variable">$extension</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="variable">$filename</span> ;</span><br><span class="line">&#125;</span><br><span class="line">add_filter(<span class="string">'sanitize_file_name'</span>, <span class="string">'upload_file'</span>, <span class="number">5</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p>代码的效果是判断附件的文件名如果是中文就自动改成md5的储存名，测试了下该代码目前还是有效的，另外有些wordpress小白可能不知道代码加在哪，小编在这里提示下，此段代码要加到当前主题的functions.php文件中，或者functions.php包含的文件中。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>wordpress上传中文名附件乱码问题如何解决，在谷歌刨了半天找出一段处理wordpress上传中文名附件乱码问题的代码：<br>]]>
     
     </summary>
     
