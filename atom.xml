@@ -4,7 +4,7 @@
   <subtitle><![CDATA[业精于勤荒于嬉]]></subtitle>
   <link href="//atom.xml" rel="self"/>
   <link href="http://dzcq.gitcafe.io/"/>
-  <updated>2015-10-05T11:59:02.542Z</updated>
+  <updated>2015-10-14T12:55:51.032Z</updated>
   <id>http://dzcq.gitcafe.io/</id>
   
   <author>
@@ -13,6 +13,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Win7,xp局域网打印机共享设置]]></title>
+    <link href="http://dzcq.gitcafe.io/2015/10/14/20151001/"/>
+    <id>http://dzcq.gitcafe.io/2015/10/14/20151001/</id>
+    <published>2015-10-14T12:25:22.000Z</published>
+    <updated>2015-10-14T12:55:51.032Z</updated>
+    <content type="html"><![CDATA[<p>Win7局域网打印机共享设置（详细图文流程）</p>
+<a id="more"></a>
+<h2 id="win7做共享主机">win7做共享主机</h2><h3 id="第一步：取消禁用Guest用户">第一步：取消禁用Guest用户</h3><ol>
+<li>点击【开始】按钮，在【计算机】上右键，选择【管理】，如下图所示：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-1.gif" alt=""></li>
+<li>在弹出的【计算机管理】窗口中找到【Guest】用户，如下图所示：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-2.gif" alt=""></li>
+<li>双击【Guest】，打开【Guest属性】窗口，确保【账户已禁用】选项没有被勾选（如下图）。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-3.gif" alt=""></li>
+</ol>
+<h3 id="第二步：共享目标打印机">第二步：共享目标打印机</h3><ol>
+<li>点击【开始】按钮，选择【设备和打印机】，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-4.gif" alt=""></li>
+<li>在弹出的窗口中找到想共享的打印机（前提是打印机已正确连接，驱动已正确安装），在该打印机上右键，选择【打印机属性】，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-5.gif" alt=""></li>
+<li>切换到【共享】选项卡，勾选【共享这台打印机】，并且设置一个共享名（请记住该共享名，后面的设置可能会用到），如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-6.gif" alt=""></li>
+</ol>
+<h3 id="第三步：进行高级共享设置">第三步：进行高级共享设置</h3><ol>
+<li>在系统托盘的网络连接图标上右键，选择【打开网络和共享中心】，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-7.gif" alt=""></li>
+<li>记住所处的网络类型（笔者的是工作网络），接着在弹出中窗口中单击【选择家庭组和共享选项】。</li>
+<li>接着单击【更改高级共享设置】。</li>
+<li>如果是家庭或工作网络，【更改高级共享设置】的具体设置可参考下图，其中的关键选项已经用红圈标示，设置完成后不要忘记保存修改。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-8.gif" alt=""></li>
+</ol>
+<blockquote>
+<p>注意：如果是公共网络，具体设置和上面的情况类似，但相应地应该设置【公共】下面的选项，而不是【家庭或工作】下面的。</p>
+</blockquote>
+<h3 id="第四步：设置工作组">第四步：设置工作组</h3><p>在添加目标打印机之前，首先要确定局域网内的计算机是否都处于一个工作组</p>
+<h3 id="第五步：在其他计算机上添加目标打印机">第五步：在其他计算机上添加目标打印机</h3><blockquote>
+<p>注意：此步操作是在局域网内的其他需要共享打印机的计算机上进行的。此步操作在XP和Win7系统中的过程是类似的，本文以Win7为例进行介绍。</p>
+</blockquote>
+<p>添加的方法有多种，在此为读者介绍其中的两种。</p>
+<p>首先，无论使用哪种方法，都应先进入【控制面板】，打开【设备和打印机】窗口，并点击【添加打印机】<br>接下来，选择【添加网络、无线或Bluetooth打印机】，点击【下一步】，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-9.gif" alt=""><br>点击了【下一步】之后，系统会自动搜索可用的打印机。</p>
+<p>如果前面的几步设置都正确的话，那么只要耐心一点等待，一般系统都能找到，接下来只需跟着提示一步步操作就行了。</p>
+<p>如果耐心地等待后系统还是找不到所需要的打印机也不要紧，也可以点击【我需要的打印机不在列表中】，然后点击【下一步】，如下图。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-10.gif" alt=""></p>
+<p>如果你没有什么耐性的话，可以直接点击【停止】，然后点击【我需要的打印机不在列表中】，接着点击【下一步】.<br>接下来的设置就有多种方法了。</p>
+<p>第一种方法：</p>
+<ol>
+<li>选择【浏览打印机】，点击【下一步】，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-11.gif" alt=""></li>
+<li>找到连接着打印机的计算机，点击【选择】。</li>
+<li>选择目标打印机（打印机名就是在第二步中设置的名称），点击【选择】。<br>接下来的操作比较简单，系统会自动找到并把该打印机的驱动安装好。至此，打印机已成功添加。</li>
+</ol>
+<p>第二种方法：</p>
+<p>1.在【添加打印机】窗口选择【按名称选择共享打印机】，并且输入“\计算机名\打印机名”（计算机名和打印机在上文中均有提及，不清楚的朋友可分别查看第二步和第四步设置）。如果前面的设置正确的话，当还输入完系统就会给出提示（如下图）。接着点击【下一步】。<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-12.gif" alt=""></p>
+<blockquote>
+<p>注意：如果此步操作中系统没有自动给出提示，那么很可能直接点击【下一步】会无法找到目标打印机，此时我们可以把“计算机名”用“IP”来替换。</p>
+<ol>
+<li>接下来继续前面的步骤，和第一种方法一样，系统会找到该设备并安装好驱动，读者只需耐性等待即可。</li>
+<li>接着系统会给出提示，告诉用户打印机已成功添加，直接点击【下一步】。</li>
+<li>至此，打印机已添加完毕，如有需要用户可点击【打印测试页】，测试一下打机是否能正常工作，也可以直接点击【完成】退出此窗口。</li>
+</ol>
+</blockquote>
+<h2 id="xp做共享主机">xp做共享主机</h2><h3 id="方法一">方法一</h3><p>win7机器如何连接到XP的共享打印机<br>解决办法：<br>1、点击开始\网络；<br>2、选择“添加打印机”；<br>3、选择 “添加本地打印机”，按一下步；<br>4、选择“创建新端口”\ 选择“local port” 这一项， 按下一步，提示输入端口名称，输入网络打印机的绝对路径，格式为：<code>\\***(共享打印机的计算机名)\***(共享打印机的共享名称)</code>，按确定；<br>5、选择好自己的网络打印机“厂商”、“型号”，如果找不到你打印机的型号，提前准备好你打印机的XP驱动，选择“从磁盘安装”，找到XP驱动所在的目录，会有对应的ini文件，选择然后你的打印机名称就会出现，按下一步，OK!!!<br>这时就用局域网的端口在WIN7下建立了一个“本地的打印机”经过测试，打印完全正常.<br>可以在win7中添加本地打印机，端口就是你共享的主机名称，例如：<code>\\10.35.3.88\hp1000</code>，或<code>\\168.170.3.66\hp1000</code>一般都可以，你可以试下，我在win7 X64 下试验成功过</p>
+<h3 id="方法二">方法二</h3><p>win8系统和win7系统安装流程一样，只是win8系统一般是64位操作系统，win7系统一般是32位的，下载的打印机驱动程序也就不一样了，后续会有介绍。也就是，我的xp系统电脑连接了打印机，并把这台打印机共享了，如何把win8系统连接到共享的打印机。<br>一、首先新建立端口。下面看操作流程：<br>1、打开win8系统或者win7系统控制面板的设备和打印机页面，如下：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-13.jpg" alt=""><br>2、选择“打印和服务器属性”，打开对话框如下：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-14.jpg" alt=""><br>3、点击“端口”这一栏，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-15.jpg" alt=""><br>4、然后，点击“添加端口”，这时会弹出一个打印机端口的对话框，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-16.jpg" alt=""><br>5、然后选择“Local Port”这一项，点击“新端口”。这时弹出端口名对话框，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-17.jpg" alt=""><br>6、输入端口名“\xp系统电脑IP地址或者是共享打印机电脑的名称打印机名称”（输入时不包含双引号）。</p>
+<p>点击“确定”。这时端口就已经添加好了。</p>
+<p>二、下载打印机驱动程序。</p>
+<p>1、根据你的打印机型号，去打印机企业官网下载驱动程序。要注意，如果你的电脑是32的系统，要下载32位的打印机驱动。如果是64位的电脑系统，要下载64位打印机驱动，安装形式都一样。<br>2、安装打印机驱动程序，操作流程如下，安装驱动程序以佳能打印机为例，双击驱动程序包，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-18.jpg" alt=""><br>3、点击“是”之后，弹出对话框，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-19.jpg" alt=""><br>4、点击“是”，弹出“打印机驱动程序安装窗口”，如下图：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-20.jpg" alt=""><br>5、点击“下一步”弹出如下对话框：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-21.jpg" alt=""><br>6、选择“添加新打印机”，点击“下一步”。弹出如下对话框：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-22.jpg" alt=""><br>7、选择你的打印机类型，并打伤对号，点击“下一步”，弹出如下对话框：<br><img src="http://7xlxgo.com1.z0.glb.clouddn.com/hexo/201510001-23.jpg" alt=""><br>8、在端口栏：点击未设置右边的道三角号，选择刚才新建立的端口。并可以将打印机名中的“设为默认值”选中，也就意味着将服务器中的打印机设为默认打印机。点击“下一步”。</p>
+<p>9、此时会提示你“是否安装驱动程序”，点击“是”。驱动程序安装完成后，点击“完成”。此时win8电脑客户端或者win7电脑客户端已经连接到xp电脑服务器端了，可以打印一张白纸试验一下。</p>
+<h2 id="附：win7中隐藏Guest用户的方法">附：win7中隐藏Guest用户的方法</h2><p>在Windows7中，我们有时候需要开启Guest用户，以方便给别的同事共享打印机和部分文件，但同时又不希望别人用Guest账号从本地登陆界面进入本机。这个时候就需要将本地登陆界面的Guest用户进行隐藏。</p>
+<p> 方法如下：</p>
+<p>打开注册表编辑器，定位到以下位置：<br><code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></p>
+<p>在默认状态下，windows 7 系统没有在 Winlogon下生成<code>SpecialAccounts\UserList</code> 这个子项，所以，需要我们手动添加这个子项，添加完成后应该是这样的：<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE<span class="command">\SOFTWARE</span><span class="command">\Microsoft</span><span class="command">\Windows</span> NT<span class="command">\CurrentVersion</span><span class="command">\Winlogon</span><span class="command">\SpecialAccounts</span><span class="command">\UserList</span></span><br></pre></td></tr></table></figure></p>
+<p>在UserList下，再新建一个DWORD值（新建时注意选32位的，不要选64位的），名称为Guest，键值为“0”（1为显示，0为不显示）<br>好了，注销重新登录一次，会发现Guest用户名已经被隐藏掉了，这个问题应该和 Windows 7 的注册表结构有关（缺少那个<code>SpecialAccounts\UserList</code> 项目）。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Win7局域网打印机共享设置（详细图文流程）</p>]]>
+    
+    </summary>
+    
+      <category term="打印机共享" scheme="http://dzcq.gitcafe.io/tags/%E6%89%93%E5%8D%B0%E6%9C%BA%E5%85%B1%E4%BA%AB/"/>
+    
+      <category term="系统相关" scheme="http://dzcq.gitcafe.io/categories/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[archlinux安装过程]]></title>
@@ -910,29 +985,6 @@
       <category term="nodejs" scheme="http://dzcq.gitcafe.io/tags/nodejs/"/>
     
       <category term="nodejs" scheme="http://dzcq.gitcafe.io/categories/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[WordPress 4.1.1 文章ID不连续的解决方案]]></title>
-    <link href="http://dzcq.gitcafe.io/2015/09/20/wp-ID/"/>
-    <id>http://dzcq.gitcafe.io/2015/09/20/wp-ID/</id>
-    <published>2015-09-20T08:08:42.000Z</published>
-    <updated>2015-09-21T05:31:03.222Z</updated>
-    <content type="html"><![CDATA[<p>WordPress的版本修订历史（revision）、自动保存（autosave）等功能会造成文章的ID不连续 ，让我们这些有强迫症的人感到非常不舒服。本文将介绍在WordPress 4.1.1下如何禁止版本修订、自动保存等问题。<br><a id="more"></a><br>禁用 WordPress 文章修订历史和自动保存功能呢？<br>找到wp-includes/defaut-contants.php文件，修改如下代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改前</span></span><br><span class="line"><span class="keyword">if</span> ( !defined( <span class="string">'AUTOSAVE_INTERVAL'</span> ) )</span><br><span class="line">  define( <span class="string">'AUTOSAVE_INTERVAL'</span>, <span class="number">60</span> );</span><br><span class="line"><span class="keyword">if</span> ( !defined(<span class="string">'WP_POST_REVISIONS'</span>) )</span><br><span class="line">  define(<span class="string">'WP_POST_REVISIONS'</span>, <span class="keyword">true</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改后</span></span><br><span class="line"><span class="keyword">if</span> ( !defined( <span class="string">'AUTOSAVE_INTERVAL'</span> ) )</span><br><span class="line">  define( <span class="string">'AUTOSAVE_INTERVAL'</span>, <span class="keyword">false</span> );</span><br><span class="line"><span class="keyword">if</span> ( !defined(<span class="string">'WP_POST_REVISIONS'</span>) )</span><br><span class="line">  define(<span class="string">'WP_POST_REVISIONS'</span>, <span class="keyword">false</span> );</span><br></pre></td></tr></table></figure>
-<p>注：其中autosave的60为自动保存时间间隔，单位为s，可以修改为更大的数值或修改为false禁用。<br>上面这一步也可以修改根目录下的wp-config.php文件，在“define(‘WP_DEBUG’, false);”后边添加如下代码：</p>
-<p><font color="#8B0000">define(‘AUTOSAVE_INTERVAL’, false );</font></p>
-<p><font color="#8B0000">define(‘WP_POST_REVISIONS’, false);</font></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>WordPress的版本修订历史（revision）、自动保存（autosave）等功能会造成文章的ID不连续 ，让我们这些有强迫症的人感到非常不舒服。本文将介绍在WordPress 4.1.1下如何禁止版本修订、自动保存等问题。<br>]]>
-    
-    </summary>
-    
-      <category term="wordpress" scheme="http://dzcq.gitcafe.io/tags/wordpress/"/>
-    
-      <category term="Wordpress" scheme="http://dzcq.gitcafe.io/categories/Wordpress/"/>
     
   </entry>
   
